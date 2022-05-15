@@ -80,7 +80,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtnActionPerformed
-        System.out.println("Adventure Sudah bisa");
+        GameWindowFrame GameWindow = new GameWindowFrame();
+        GameWindow.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_playBtnActionPerformed
 
 
