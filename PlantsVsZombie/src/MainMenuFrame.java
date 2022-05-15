@@ -24,6 +24,15 @@ public class MainMenuFrame extends javax.swing.JFrame {
         playBtn.setOpaque(false);
         playBtn.setContentAreaFilled(false);
         playBtn.setBorderPainted(false);
+        
+        playBtn2.setContentAreaFilled(false);
+        playBtn2.setBorderPainted(false);
+        
+        playBtn3.setContentAreaFilled(false);
+        playBtn3.setBorderPainted(false);
+        
+        playBtn4.setContentAreaFilled(false);
+        playBtn4.setBorderPainted(false);
     }
     
 
@@ -38,13 +47,65 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
         mainMenu1 = new MainMenu();
         playBtn = new javax.swing.JButton();
+        playBtn2 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        playBtn3 = new javax.swing.JButton();
+        playBtn4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
 
+        playBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         playBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playBtnActionPerformed(evt);
+            }
+        });
+
+        playBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        playBtn2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                playBtn2ComponentHidden(evt);
+            }
+        });
+        playBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playBtn2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        playBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        playBtn3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                playBtn3ComponentHidden(evt);
+            }
+        });
+        playBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playBtn3ActionPerformed(evt);
+            }
+        });
+
+        playBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        playBtn4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                playBtn4ComponentHidden(evt);
+            }
+        });
+        playBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playBtn4ActionPerformed(evt);
             }
         });
 
@@ -52,17 +113,42 @@ public class MainMenuFrame extends javax.swing.JFrame {
         mainMenu1.setLayout(mainMenu1Layout);
         mainMenu1Layout.setHorizontalGroup(
             mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                .addContainerGap(610, Short.MAX_VALUE)
+            .addGroup(mainMenu1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(playBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(playBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(playBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(playBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         mainMenu1Layout.setVerticalGroup(
             mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainMenu1Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(playBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(571, Short.MAX_VALUE))
+                .addGroup(mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainMenu1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(playBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainMenu1Layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainMenu1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(playBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+                .addGroup(mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
+                        .addComponent(playBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
+                        .addComponent(playBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,9 +171,37 @@ public class MainMenuFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_playBtnActionPerformed
 
+    private void playBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn2ActionPerformed
+
+    private void playBtn2ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn2ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn2ComponentHidden
+
+    private void playBtn3ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn3ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn3ComponentHidden
+
+    private void playBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn3ActionPerformed
+
+    private void playBtn4ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn4ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn4ComponentHidden
+
+    private void playBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playBtn4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane jLayeredPane1;
     private MainMenu mainMenu1;
     private javax.swing.JButton playBtn;
+    private javax.swing.JButton playBtn2;
+    private javax.swing.JButton playBtn3;
+    private javax.swing.JButton playBtn4;
     // End of variables declaration//GEN-END:variables
 }

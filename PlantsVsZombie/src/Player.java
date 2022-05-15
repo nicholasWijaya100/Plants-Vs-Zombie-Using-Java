@@ -13,13 +13,15 @@ public class Player {
     private String password;
     private String nama_asli;
     private int umur;
+    private int highscore;
 
-    public Player(String userID, String username, String password, String nama_asli, int umur) {
+    public Player(String userID, String username, String password, String nama_asli, int umur, int highscore) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.nama_asli = nama_asli;
         this.umur = umur;
+        this.highscore = highscore;
     }
 
     public String getUserID() {
@@ -61,4 +63,14 @@ public class Player {
     public void setUmur(int umur) {
         this.umur = umur;
     }
+
+    public int getHighscore() {
+        return highscore;
+    }
+
+    public void setHighscore(int highscore) {
+        this.highscore = highscore;
+    }
+    
+    
 }

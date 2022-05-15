@@ -77,6 +77,7 @@ public class RegisterAccountFrame extends javax.swing.JFrame {
         SpinnerAge.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         SpinnerAge.setModel(new javax.swing.SpinnerNumberModel(10, 10, 200, 1));
 
+        RegisterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         RegisterButton.setFont(new java.awt.Font("Segoe UI Variable", 1, 24)); // NOI18N
         RegisterButton.setLabel("Register");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {

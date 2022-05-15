@@ -24,6 +24,14 @@ public class Driver {
         player.add(p);
     }
     
+    public void load(Player p){
+        
+    }
+    
+    public static void save(Player p){
+        
+    }
+    
     public static void main(String[] args) {
         if(player.size() == 0) {
             RegisterAccountFrame regis = new RegisterAccountFrame();
