@@ -27,6 +27,7 @@ public class GameWindow extends javax.swing.JPanel {
     public GameWindow() {
         initComponents();
         this.setSize(1000, 752);
+        
         try {
             menuImage = ImageIO.read(new File("images/mainBG.png"));
         } catch (IOException ex) {

@@ -1,20 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
-/**
- *
- * @author Mario
- */
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 public class GameWindowFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GameWindowFrame
-     */
+
     public GameWindowFrame() {
         initComponents();
         this.setSize(1000, 752);
+        setLocationRelativeTo(null);
+        try {
+           Driver.clip.stop();
+           File f = new File("openingVideo.mp4");
+           Desktop d = Desktop.getDesktop();
+           d.open(f);
+        } catch (IOException ex) {
+            System.out.println("Err : " + ex.getMessage().toString());
+        }
+        try{
+            Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/day.wav"));
+            Driver.clip = AudioSystem.getClip( );
+            Driver.clip.loop(Clip.LOOP_CONTINUOUSLY);
+            Driver.clip.open(Driver.audioInputStream);
+            Driver.clip.start();
+        } catch(LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

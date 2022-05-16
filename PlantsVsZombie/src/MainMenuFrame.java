@@ -1,5 +1,13 @@
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 
 /*
@@ -20,6 +28,16 @@ public class MainMenuFrame extends javax.swing.JFrame {
     public MainMenuFrame() {
         initComponents();
         this.setSize(1021, 785);
+        try{
+            Driver.clip.stop();
+            Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/mainMenu.wav"));
+            Driver.clip = AudioSystem.getClip( );
+            Driver.clip.loop(Clip.LOOP_CONTINUOUSLY);
+            Driver.clip.open(Driver.audioInputStream);
+            Driver.clip.start();
+        } catch(LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
+            Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
+        }
         playBtn.setLocation(530, 110);
         playBtn.setOpaque(false);
         playBtn.setContentAreaFilled(false);
