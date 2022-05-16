@@ -43,14 +43,14 @@ public class MainMenuFrame extends javax.swing.JFrame {
         playBtn.setContentAreaFilled(false);
         playBtn.setBorderPainted(false);
         
-        playBtn2.setContentAreaFilled(false);
-        playBtn2.setBorderPainted(false);
+        Users.setContentAreaFilled(false);
+        Users.setBorderPainted(false);
         
-        playBtn3.setContentAreaFilled(false);
-        playBtn3.setBorderPainted(false);
+        Quit.setContentAreaFilled(false);
+        Quit.setBorderPainted(false);
         
-        playBtn4.setContentAreaFilled(false);
-        playBtn4.setBorderPainted(false);
+        Options.setContentAreaFilled(false);
+        Options.setBorderPainted(false);
     }
     
 
@@ -65,10 +65,10 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
         mainMenu1 = new MainMenu();
         playBtn = new javax.swing.JButton();
-        playBtn2 = new javax.swing.JButton();
+        Users = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        playBtn3 = new javax.swing.JButton();
-        playBtn4 = new javax.swing.JButton();
+        Quit = new javax.swing.JButton();
+        Options = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
@@ -80,15 +80,20 @@ public class MainMenuFrame extends javax.swing.JFrame {
             }
         });
 
-        playBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        playBtn2.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                playBtn2ComponentHidden(evt);
+        Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Users.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsersMouseClicked(evt);
             }
         });
-        playBtn2.addActionListener(new java.awt.event.ActionListener() {
+        Users.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                UsersComponentHidden(evt);
+            }
+        });
+        Users.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playBtn2ActionPerformed(evt);
+                UsersActionPerformed(evt);
             }
         });
 
@@ -103,27 +108,32 @@ public class MainMenuFrame extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        playBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        playBtn3.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                playBtn3ComponentHidden(evt);
+        Quit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Quit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                QuitMouseClicked(evt);
             }
         });
-        playBtn3.addActionListener(new java.awt.event.ActionListener() {
+        Quit.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                QuitComponentHidden(evt);
+            }
+        });
+        Quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playBtn3ActionPerformed(evt);
+                QuitActionPerformed(evt);
             }
         });
 
-        playBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        playBtn4.addComponentListener(new java.awt.event.ComponentAdapter() {
+        Options.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Options.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
-                playBtn4ComponentHidden(evt);
+                OptionsComponentHidden(evt);
             }
         });
-        playBtn4.addActionListener(new java.awt.event.ActionListener() {
+        Options.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playBtn4ActionPerformed(evt);
+                OptionsActionPerformed(evt);
             }
         });
 
@@ -133,7 +143,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
             mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainMenu1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(playBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
@@ -141,9 +151,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
                 .addGap(98, 98, 98))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(playBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Options, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
-                .addComponent(playBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         mainMenu1Layout.setVerticalGroup(
@@ -158,14 +168,14 @@ public class MainMenuFrame extends javax.swing.JFrame {
                         .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(mainMenu1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(playBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
                 .addGroup(mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                        .addComponent(playBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                        .addComponent(playBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Options, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50))))
         );
 
@@ -189,37 +199,47 @@ public class MainMenuFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_playBtnActionPerformed
 
-    private void playBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn2ActionPerformed
+    private void UsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn2ActionPerformed
+    }//GEN-LAST:event_UsersActionPerformed
 
-    private void playBtn2ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn2ComponentHidden
+    private void UsersComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_UsersComponentHidden
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn2ComponentHidden
+    }//GEN-LAST:event_UsersComponentHidden
 
-    private void playBtn3ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn3ComponentHidden
+    private void QuitComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_QuitComponentHidden
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn3ComponentHidden
+    }//GEN-LAST:event_QuitComponentHidden
 
-    private void playBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn3ActionPerformed
+    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn3ActionPerformed
+    }//GEN-LAST:event_QuitActionPerformed
 
-    private void playBtn4ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playBtn4ComponentHidden
+    private void OptionsComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_OptionsComponentHidden
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn4ComponentHidden
+    }//GEN-LAST:event_OptionsComponentHidden
 
-    private void playBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtn4ActionPerformed
+    private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_playBtn4ActionPerformed
+    }//GEN-LAST:event_OptionsActionPerformed
+
+    private void UsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersMouseClicked
+        ShowUserFrame show = new ShowUserFrame();
+        show.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_UsersMouseClicked
+
+    private void QuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_QuitMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Options;
+    private javax.swing.JButton Quit;
+    private javax.swing.JButton Users;
     private javax.swing.JLayeredPane jLayeredPane1;
     private MainMenu mainMenu1;
     private javax.swing.JButton playBtn;
-    private javax.swing.JButton playBtn2;
-    private javax.swing.JButton playBtn3;
-    private javax.swing.JButton playBtn4;
     // End of variables declaration//GEN-END:variables
 }
