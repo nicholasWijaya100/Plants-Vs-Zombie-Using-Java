@@ -22,7 +22,7 @@ public class GameWindow extends javax.swing.JPanel {
      * Creates new form GameWindow
      */
     
-    Image menuImage = null;
+    Image menuImage;
 
     public GameWindow() {
         initComponents();
@@ -33,6 +33,8 @@ public class GameWindow extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
     
     @Override
@@ -49,15 +51,18 @@ public class GameWindow extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setPreferredSize(new java.awt.Dimension(1000, 752));
+        setRequestFocusEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 752, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

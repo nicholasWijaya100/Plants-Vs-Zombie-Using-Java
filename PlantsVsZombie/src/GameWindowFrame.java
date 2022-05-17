@@ -8,6 +8,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 public class GameWindowFrame extends javax.swing.JFrame {
 
 
@@ -32,6 +33,24 @@ public class GameWindowFrame extends javax.swing.JFrame {
         } catch(LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        CardPlant sunflower = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
+        sunflower.setLocation(110,8);
+        getLayeredPane().add(sunflower,new Integer(3));
+        
+        CardPlant plant2 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
+        plant2.setLocation(175,8);
+        getLayeredPane().add(plant2,new Integer(3));
+        
+        CardPlant plant3 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
+        plant3.setLocation(240,8);
+        getLayeredPane().add(plant3,new Integer(3));
+        
+        CardPlant plant4 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
+        plant4.setLocation(305,8);
+        getLayeredPane().add(plant4,new Integer(3));
+        
+        
     }
 
     /**
@@ -46,16 +65,20 @@ public class GameWindowFrame extends javax.swing.JFrame {
         gameWindow1 = new GameWindow();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Zombie Vs Plants");
+        setPreferredSize(new java.awt.Dimension(1000, 300));
+
+        gameWindow1.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout gameWindow1Layout = new javax.swing.GroupLayout(gameWindow1);
         gameWindow1.setLayout(gameWindow1Layout);
         gameWindow1Layout.setHorizontalGroup(
             gameWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         gameWindow1Layout.setVerticalGroup(
             gameWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 752, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
