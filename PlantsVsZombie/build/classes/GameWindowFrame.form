@@ -38,9 +38,6 @@
   </Layout>
   <SubComponents>
     <Container class="GameWindow" name="gameWindow1">
-      <Properties>
-        <Property name="requestFocusEnabled" type="boolean" value="false"/>
-      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

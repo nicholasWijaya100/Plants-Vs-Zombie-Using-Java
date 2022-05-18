@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -33,24 +34,25 @@ public class GameWindowFrame extends javax.swing.JFrame {
         } catch(LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        CardPlant sunflower = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
-        sunflower.setLocation(110,8);
-        getLayeredPane().add(sunflower,new Integer(3));
-        
-        CardPlant plant2 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
-        plant2.setLocation(175,8);
-        getLayeredPane().add(plant2,new Integer(3));
-        
-        CardPlant plant3 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
-        plant3.setLocation(240,8);
-        getLayeredPane().add(plant3,new Integer(3));
-        
-        CardPlant plant4 = new CardPlant(new ImageIcon(this.getClass().getResource("images/card_sunflower.png")).getImage());
-        plant4.setLocation(305,8);
-        getLayeredPane().add(plant4,new Integer(3));
-        
-        
+        try {
+            CardPlant sunflower = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            sunflower.setLocation(110,8);
+            getLayeredPane().add(sunflower,new Integer(3));
+
+            CardPlant plant2 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            plant2.setLocation(175,8);
+            getLayeredPane().add(plant2,new Integer(3));
+
+            CardPlant plant3 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            plant3.setLocation(240,8);
+            getLayeredPane().add(plant3,new Integer(3));
+
+            CardPlant plant4 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            plant4.setLocation(305,8);
+            getLayeredPane().add(plant4,new Integer(3));
+        } catch(IOException e) {
+            
+        }
     }
 
     /**
@@ -67,8 +69,6 @@ public class GameWindowFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
         setPreferredSize(new java.awt.Dimension(1000, 300));
-
-        gameWindow1.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout gameWindow1Layout = new javax.swing.GroupLayout(gameWindow1);
         gameWindow1.setLayout(gameWindow1Layout);

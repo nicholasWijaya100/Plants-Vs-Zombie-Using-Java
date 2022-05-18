@@ -8,28 +8,18 @@
  * @author nichw
  */
 public class Player {
-    private String userID;
     private String username;
     private String password;
     private String nama_asli;
     private int umur;
     private int highscore;
 
-    public Player(String userID, String username, String password, String nama_asli, int umur, int highscore) {
-        this.userID = userID;
+    public Player(String username, String password, String nama_asli, int umur, int highscore) {
         this.username = username;
         this.password = password;
         this.nama_asli = nama_asli;
         this.umur = umur;
         this.highscore = highscore;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public String getUsername() {

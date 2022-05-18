@@ -1,4 +1,5 @@
 
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /*
@@ -169,8 +170,20 @@ public class RegisterAccountFrame extends javax.swing.JFrame {
         if(tUsername.equalsIgnoreCase("") || tPassword.equalsIgnoreCase("") || tRealName.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(this, "Text Field tidak boleh ada yang kosong", "Warning!", JOptionPane.ERROR_MESSAGE);
         } else {
+            try{
+                String sql = "INSERT INTO gameuser (username, pass, nama_asli, umur, highscore) value"
+                    + "('"+ tUsername +"','"+ tPassword +"','"+ tRealName +"','"+ age +"','"+ 0 +"')";
+                Statement  st = Driver.con.createStatement();
+                st.execute(sql);
+                Driver.player.add(new Player(tUsername,tPassword,tRealName,age,0));
+                JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
+            }catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "Data Gagal Disimpan", "Warning!", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
             MainMenuFrame mainMenu = new MainMenuFrame();
             mainMenu.setVisible(true);
+            mainMenu.setLocationRelativeTo(null);
             this.setVisible(false);
         }
     }//GEN-LAST:event_RegisterButtonActionPerformed

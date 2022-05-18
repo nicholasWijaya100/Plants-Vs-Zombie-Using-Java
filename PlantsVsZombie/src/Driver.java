@@ -1,7 +1,10 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.logging.Level;
@@ -32,6 +35,7 @@ public class Driver {
     public static Player currentPlayer = null;
     public static AudioInputStream audioInputStream;
     public static Clip clip;
+    public static Connection con;
     public static void add(Player p) {
         player.add(p);
     }
@@ -40,7 +44,7 @@ public class Driver {
        try {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver()); 
         //nama database yang di connect : db_bioskop --> nanti diganti
-        DriverManager.getConnection("jdbc:mysql://127.0.01/db_bioskop", "root", ""); 
+        con = DriverManager.getConnection("jdbc:mysql://127.0.01/db_proyekpbo_2022", "root", ""); 
         System.out.println("WELCOME, YOU SUCCESS FOR CONNECT TODATABASE");
         } catch (Exception ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,20 +52,32 @@ public class Driver {
         }       
     }
     
-    public static void load(Player p){
+    public static void loadPlayers(){
+        player.clear();
         try{
-        
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM gameuser";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next())
+            {
+                
+                Player pnew = new Player(res.getString(1),res.getString(2),res.getString(3),
+                                         res.getInt(4),res.getInt(5)
+                                         );
+                player.add(pnew);
+            }
         } catch(Exception e) {
-            
+            e.printStackTrace();
         }
     }
     
-    public static void save(Player p){
+    public static void save(){
         
     }
     
     public static void main(String[] args) {
         KoneksiDB();
+        loadPlayers();
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File("music/mainMenu.wav"));
             clip = AudioSystem.getClip( );
