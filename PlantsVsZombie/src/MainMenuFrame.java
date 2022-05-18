@@ -196,6 +196,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private void playBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playBtnActionPerformed
         GameWindowFrame GameWindow = new GameWindowFrame();
         GameWindow.setVisible(true);
+        GameWindow.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_playBtnActionPerformed
 
@@ -226,6 +227,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private void UsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersMouseClicked
         ShowUserFrame show = new ShowUserFrame();
         show.setVisible(true);
+        show.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_UsersMouseClicked
 

@@ -120,6 +120,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
     private void Can_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Can_BtnMouseClicked
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
+        MM.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_Can_BtnMouseClicked
 
@@ -130,6 +131,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
+        MM.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_Ok_BtnMouseClicked
 

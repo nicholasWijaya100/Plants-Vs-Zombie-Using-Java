@@ -39,17 +39,21 @@ public class GameWindowFrame extends javax.swing.JFrame {
             sunflower.setLocation(110,8);
             getLayeredPane().add(sunflower,new Integer(3));
 
-            CardPlant plant2 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            CardPlant plant2 = new CardPlant(ImageIO.read(new File("images/card_peashooter.png")));
             plant2.setLocation(175,8);
             getLayeredPane().add(plant2,new Integer(3));
 
-            CardPlant plant3 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            CardPlant plant3 = new CardPlant(ImageIO.read(new File("images/card_freezepeashooter.png")));
             plant3.setLocation(240,8);
             getLayeredPane().add(plant3,new Integer(3));
 
-            CardPlant plant4 = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
+            CardPlant plant4 = new CardPlant(ImageIO.read(new File("images/card_wallnut.png")));
             plant4.setLocation(305,8);
             getLayeredPane().add(plant4,new Integer(3));
+            
+            CardPlant plant5 = new CardPlant(ImageIO.read(new File("images/card_cherrybomb.png")));
+            plant5.setLocation(370,8);
+            getLayeredPane().add(plant5,new Integer(3));
         } catch(IOException e) {
             
         }
