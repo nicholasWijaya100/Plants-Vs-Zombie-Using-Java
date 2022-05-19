@@ -1,6 +1,10 @@
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +16,8 @@ import javax.print.attribute.standard.Media;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.io.File;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 
 /*
@@ -38,6 +44,12 @@ public class MainMenu extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+//        Component c = (Component)e.getSource();
+//        Window window = SwingUtilities.windowForComponent(c);
+//        window.add(blue );
+//        window.revalidate();
+//        window.repaint();
     }
     
     @Override
@@ -54,7 +66,7 @@ public class MainMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setPreferredSize(new java.awt.Dimension(1071, 785));
+        setPreferredSize(new java.awt.Dimension(1021, 785));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -45,7 +45,7 @@ public class Driver {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver()); 
         //nama database yang di connect : db_bioskop --> nanti diganti
         con = DriverManager.getConnection("jdbc:mysql://127.0.01/db_proyekpbo_2022", "root", ""); 
-        System.out.println("WELCOME, YOU SUCCESS FOR CONNECT TODATABASE");
+        System.out.println("Database connection successful");
         } catch (Exception ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("TRY AGAIN FOR CONNECT TO DATABASE!!");
@@ -93,6 +93,7 @@ public class Driver {
             regis.setLocationRelativeTo(null);
             regis.setVisible(true);
         } else {
+            currentPlayer = player.get(0);
             MainMenuFrame menu = new MainMenuFrame();
             menu.setLocationRelativeTo(null);
             menu.setVisible(true);

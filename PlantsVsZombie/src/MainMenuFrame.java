@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -51,6 +54,10 @@ public class MainMenuFrame extends javax.swing.JFrame {
         
         Options.setContentAreaFilled(false);
         Options.setBorderPainted(false);
+        
+        Font font = new Font("Verdana", Font.PLAIN, 34);
+        usernameLabel.setFont(font);
+        usernameLabel.setForeground(Color.white);
     }
     
 
@@ -69,9 +76,12 @@ public class MainMenuFrame extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Quit = new javax.swing.JButton();
         Options = new javax.swing.JButton();
+        usernameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
+
+        mainMenu1.setLayout(null);
 
         playBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         playBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +89,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
                 playBtnActionPerformed(evt);
             }
         });
+        mainMenu1.add(playBtn);
+        playBtn.setBounds(592, 99, 383, 135);
 
         Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Users.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,6 +108,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
                 UsersActionPerformed(evt);
             }
         });
+        mainMenu1.add(Users);
+        Users.setBounds(40, 173, 356, 70);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -107,6 +121,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        mainMenu1.add(jLayeredPane1);
+        jLayeredPane1.setBounds(422, 103, 100, 100);
 
         Quit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Quit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,6 +141,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
                 QuitActionPerformed(evt);
             }
         });
+        mainMenu1.add(Quit);
+        Quit.setBounds(970, 659, 82, 124);
 
         Options.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Options.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -136,54 +155,22 @@ public class MainMenuFrame extends javax.swing.JFrame {
                 OptionsActionPerformed(evt);
             }
         });
+        mainMenu1.add(Options);
+        Options.setBounds(783, 632, 92, 123);
 
-        javax.swing.GroupLayout mainMenu1Layout = new javax.swing.GroupLayout(mainMenu1);
-        mainMenu1.setLayout(mainMenu1Layout);
-        mainMenu1Layout.setHorizontalGroup(
-            mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainMenu1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(playBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Options, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
-        mainMenu1Layout.setVerticalGroup(
-            mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainMenu1Layout.createSequentialGroup()
-                .addGroup(mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainMenu1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(playBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainMenu1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainMenu1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
-                .addGroup(mainMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                        .addComponent(Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenu1Layout.createSequentialGroup()
-                        .addComponent(Options, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))))
-        );
+        usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usernameLabel.setText(Driver.currentPlayer.getUsername());
+        mainMenu1.add(usernameLabel);
+        usernameLabel.setBounds(100, 110, 240, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 1073, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,5 +230,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private MainMenu mainMenu1;
     private javax.swing.JButton playBtn;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
