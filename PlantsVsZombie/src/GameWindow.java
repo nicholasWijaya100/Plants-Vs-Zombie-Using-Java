@@ -3,19 +3,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-
-/**
- *
- * @author Mario
- */
 public class GameWindow extends javax.swing.JPanel {
 
     /**
@@ -23,6 +17,10 @@ public class GameWindow extends javax.swing.JPanel {
      */
     
     Image menuImage;
+    Image sunflowerImage;
+    ArrayList<Plant> listPlant = new ArrayList<>();
+    ArrayList<Plant> plantDitanam = new ArrayList<>();
+    Plant selectedPlant = null;
 
     public GameWindow() {
         initComponents();
@@ -34,12 +32,22 @@ public class GameWindow extends javax.swing.JPanel {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        try { 
+            sunflowerImage = ImageIO.read(new File("images/sunflower.gif"));
+            listPlant.add(new Sunflower(5, 0, 100, sunflowerImage, 160, 610));
+        } catch (IOException ex) {
+            System.out.println("Gambar Sunflower tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     @Override
     protected void paintComponent(Graphics g) {
+        g.clearRect(0, 0, 1000, 752);
         g.drawImage(menuImage, 0, 0, 1000, 752, null);
+        for(Plant i : plantDitanam) {
+            i.draw(g);
+        }
     }
 
     /**
