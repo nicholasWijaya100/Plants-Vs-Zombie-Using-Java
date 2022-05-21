@@ -80,7 +80,7 @@ public class Driver {
         loadPlayers();
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File("music/mainMenu.wav"));
-            clip = AudioSystem.getClip( );
+            clip = AudioSystem.getClip();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.open(audioInputStream);
             clip.start();

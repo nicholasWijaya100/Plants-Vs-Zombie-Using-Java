@@ -11,6 +11,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /*
@@ -30,6 +31,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
     
     public MainMenuFrame() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1021, 785);
         try{
             Driver.clip.stop();

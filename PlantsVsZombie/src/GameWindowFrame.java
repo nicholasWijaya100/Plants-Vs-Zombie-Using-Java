@@ -10,11 +10,14 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 public class GameWindowFrame extends javax.swing.JFrame {
 
 
     public GameWindowFrame() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 752);
         setLocationRelativeTo(null);
         try {
@@ -25,6 +28,7 @@ public class GameWindowFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.out.println("Err : " + ex.getMessage().toString());
         }
+        
         try{
             Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/day.wav"));
             Driver.clip = AudioSystem.getClip( );
@@ -34,6 +38,7 @@ public class GameWindowFrame extends javax.swing.JFrame {
         } catch(LineUnavailableException | UnsupportedAudioFileException | IOException ex) {
             Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             CardPlant sunflower = new CardPlant(ImageIO.read(new File("images/card_sunflower.png")));
             sunflower.setLocation(110,8);

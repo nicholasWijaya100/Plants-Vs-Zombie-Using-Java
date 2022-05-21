@@ -7,10 +7,10 @@ public class Sunflower extends Plant{
     private double waktuGenerateSun; //waktu yang diperlukan sunflower untuk spawn sun
     private double terakhirGenerateSun; //Detik terakhir sun di generate
 
-    public Sunflower(double waktuGenerateSun, double terakhirGenerateSun, int hp, Image plantImage, int x, int y) {
-        super(hp, plantImage, x, y);
+    public Sunflower(double waktuGenerateSun, int hp, Image plantImage, int x, int y, int cost) {
+        super(hp, plantImage, x, y, cost);
         this.waktuGenerateSun = waktuGenerateSun;
-        this.terakhirGenerateSun = terakhirGenerateSun;
+        this.terakhirGenerateSun = 0;
     }
 
     public double getWaktuGenerateSun() {
@@ -79,5 +79,10 @@ public class Sunflower extends Plant{
     @Override
     public void draw(Graphics g) {
         g.drawImage(this.plantImage, x, y, null);
+    }    
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 }

@@ -1,5 +1,6 @@
 
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -18,6 +19,7 @@ public class RegisterAccountFrame extends javax.swing.JFrame {
      */
     public RegisterAccountFrame() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
