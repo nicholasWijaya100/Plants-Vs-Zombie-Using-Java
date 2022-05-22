@@ -29,6 +29,32 @@ public class ShowUserPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try{
+            user2.setText(Driver.player.get(1).getUsername());
+        }catch(Exception e){
+            user2.setText("-");
+        }
+
+        
+        try{
+            user3.setText(Driver.player.get(2).getUsername());
+        }catch(Exception e){
+            user3.setText("-");
+        }
+
+        
+        try{
+            user4.setText(Driver.player.get(3).getUsername());
+        }catch(Exception e){
+            user4.setText("-");
+        }
+
+        
+        try{
+            user5.setText(Driver.player.get(4).getUsername());
+        }catch(Exception e){
+            user5.setText("-");
+        }
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -43,6 +69,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         Can_Btn = new javax.swing.JButton();
         Rename_Btn = new javax.swing.JButton();
         Ok_Btn = new javax.swing.JButton();
+        user2 = new javax.swing.JLabel();
+        user1 = new javax.swing.JLabel();
+        user3 = new javax.swing.JLabel();
+        user4 = new javax.swing.JLabel();
+        user5 = new javax.swing.JLabel();
 
         Del_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Del_Btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,6 +103,41 @@ public class ShowUserPanel extends javax.swing.JPanel {
             }
         });
 
+        user2.setBackground(new java.awt.Color(255, 255, 255));
+        user2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user2.setForeground(new java.awt.Color(255, 255, 255));
+        user2.setText(Driver.player.get(0).getUsername());
+        user2.setToolTipText("");
+        user2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        user1.setBackground(new java.awt.Color(255, 255, 255));
+        user1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user1.setForeground(new java.awt.Color(255, 255, 255));
+        user1.setText(Driver.player.get(0).getUsername());
+        user1.setToolTipText("");
+        user1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        user3.setBackground(new java.awt.Color(255, 255, 255));
+        user3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user3.setForeground(new java.awt.Color(255, 255, 255));
+        user3.setText(Driver.player.get(0).getUsername());
+        user3.setToolTipText("");
+        user3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        user4.setBackground(new java.awt.Color(255, 255, 255));
+        user4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user4.setForeground(new java.awt.Color(255, 255, 255));
+        user4.setText(Driver.player.get(0).getUsername());
+        user4.setToolTipText("");
+        user4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        user5.setBackground(new java.awt.Color(255, 255, 255));
+        user5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        user5.setForeground(new java.awt.Color(255, 255, 255));
+        user5.setText(Driver.player.get(0).getUsername());
+        user5.setToolTipText("");
+        user5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,11 +152,30 @@ public class ShowUserPanel extends javax.swing.JPanel {
                     .addComponent(Can_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Del_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(114, 114, 114))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(214, 214, 214)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(user5, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(466, Short.MAX_VALUE)
+                .addContainerGap(225, Short.MAX_VALUE)
+                .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(user2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(user3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(user4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(user5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Rename_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,5 +217,10 @@ public class ShowUserPanel extends javax.swing.JPanel {
     private javax.swing.JButton Del_Btn;
     private javax.swing.JButton Ok_Btn;
     private javax.swing.JButton Rename_Btn;
+    private javax.swing.JLabel user1;
+    private javax.swing.JLabel user2;
+    private javax.swing.JLabel user3;
+    private javax.swing.JLabel user4;
+    private javax.swing.JLabel user5;
     // End of variables declaration//GEN-END:variables
 }
