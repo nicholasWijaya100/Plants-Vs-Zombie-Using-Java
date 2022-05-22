@@ -24,8 +24,8 @@ public class ShowUserPanel extends javax.swing.JPanel {
             Ok_Btn.setBorderPainted(false);
             Can_Btn.setContentAreaFilled(false);
             Can_Btn.setBorderPainted(false);
-            Rename_Btn.setContentAreaFilled(false);
-            Rename_Btn.setBorderPainted(false);
+            New_Btn.setContentAreaFilled(false);
+            New_Btn.setBorderPainted(false);
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,7 +67,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
 
         Del_Btn = new javax.swing.JButton();
         Can_Btn = new javax.swing.JButton();
-        Rename_Btn = new javax.swing.JButton();
+        New_Btn = new javax.swing.JButton();
         Ok_Btn = new javax.swing.JButton();
         user2 = new javax.swing.JLabel();
         user1 = new javax.swing.JLabel();
@@ -89,10 +89,10 @@ public class ShowUserPanel extends javax.swing.JPanel {
             }
         });
 
-        Rename_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Rename_Btn.addMouseListener(new java.awt.event.MouseAdapter() {
+        New_Btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        New_Btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Rename_BtnMouseClicked(evt);
+                New_BtnMouseClicked(evt);
             }
         });
 
@@ -146,7 +146,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
                 .addContainerGap(167, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Ok_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Rename_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(New_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Can_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +178,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Rename_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(New_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Ok_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -200,9 +200,12 @@ public class ShowUserPanel extends javax.swing.JPanel {
         this.setVisible(false);
     }//GEN-LAST:event_Can_BtnMouseClicked
 
-    private void Rename_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Rename_BtnMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Rename_BtnMouseClicked
+    private void New_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_BtnMouseClicked
+        RegisterAccountFrame RAF = new RegisterAccountFrame();
+        RAF.setVisible(true);
+        RAF.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
         MainMenuFrame MM = new MainMenuFrame();
@@ -215,8 +218,8 @@ public class ShowUserPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Can_Btn;
     private javax.swing.JButton Del_Btn;
+    private javax.swing.JButton New_Btn;
     private javax.swing.JButton Ok_Btn;
-    private javax.swing.JButton Rename_Btn;
     private javax.swing.JLabel user1;
     private javax.swing.JLabel user2;
     private javax.swing.JLabel user3;
