@@ -82,6 +82,7 @@ public class GameWindow extends javax.swing.JPanel {
             System.out.println("Pilih Peashooter");
         }
     };
+    
     ActionListener actionPilihSnowPea = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -89,6 +90,23 @@ public class GameWindow extends javax.swing.JPanel {
             System.out.println("Pilih Snow Pea");
         }
     };
+
+    ActionListener actionPilihWallnut = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            selectedPlant = listPlant.get(3);
+            System.out.println("Pilih Wallnut");
+        }
+    };
+    
+    ActionListener actionPilihCherrybomb = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            selectedPlant = listPlant.get(4);
+            System.out.println("Pilih Cherrybomb");
+        }
+    };
+    
     MouseListener mouseClickLocation = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -313,6 +331,22 @@ public class GameWindow extends javax.swing.JPanel {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        try { 
+            imagePlant = new ImageIcon("images/wallnut.gif").getImage();
+            listPlant.add(new Wallnut(100, imagePlant, 160, 610, 50));
+        } catch (Exception ex) {
+            System.out.println("Gambar Wallnut tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try { 
+            imagePlant = new ImageIcon("images/cherrybomb.png").getImage();
+            listPlant.add(new Cherrybomb(100, imagePlant, 160, 610, 150));
+        } catch (Exception ex) {
+            System.out.println("Gambar Cherrybomb tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //Memasukan jenis zombie yang ada
         try {
             imageZombie = ImageIO.read(new File("images/normalZombie.png"));
@@ -337,6 +371,16 @@ public class GameWindow extends javax.swing.JPanel {
         btnPilihSnowPea.setBounds(240, 8, 64, 90);
         btnPilihSnowPea.addActionListener(actionPilihSnowPea);
         this.add(btnPilihSnowPea);
+        
+        JButton btnPilihWallnut = new JButton("Wallnut");
+        btnPilihWallnut.setBounds(305, 8, 64, 90);
+        btnPilihWallnut.addActionListener(actionPilihWallnut);
+        this.add(btnPilihWallnut);
+        
+        JButton btnPilihCherrybomb = new JButton("Cherrybomb");
+        btnPilihCherrybomb.setBounds(370, 8, 64, 90);
+        btnPilihCherrybomb.addActionListener(actionPilihCherrybomb);
+        this.add(btnPilihCherrybomb);
         
         //Button untuk select tile rumput
         JButton btnLawn = new JButton("");

@@ -11,12 +11,12 @@ import java.awt.Image;
  *
  * @author Mario
  */
-public class Wallnut extends Plant{
+public class Cherrybomb extends Plant{
 
-    public Wallnut(int hp, Image plantImage, int x, int y, int cost) {
+    public Cherrybomb(int hp, Image plantImage, int x, int y, int cost) {
         super(hp, plantImage, x, y, cost);
     }
-    
+
     @Override
     public void generateSun() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
