@@ -12,8 +12,8 @@ import java.awt.Image;
  */
 public class BucketHeadZombie extends Zombie{
 
-    public BucketHeadZombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, double terakhirMakan, int kecepatan) {
-        super(maxHp, zombieImage, x, y, damage, waktuTiapMakan, terakhirMakan, kecepatan);
+    public BucketHeadZombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, int kecepatan) {
+        super(maxHp, zombieImage, x, y, damage, waktuTiapMakan, kecepatan);
     }
     
 }

@@ -46,23 +46,32 @@ public class GameWindow extends javax.swing.JPanel {
                     Zombie tempZombie = (Zombie) listZombie.get(0).clone();
                     tempZombie.setX(950);
                     tempZombie.setY(120);
-                    tempZombie.setKecepatan(30);
                     zombieDiLawn.add(tempZombie);
                 } catch (CloneNotSupportedException ex) {
                     Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             for(Zombie i : zombieDiLawn) {
-                if(i.getTerakhirGerak() + 10 == ctrDetik) {
+                boolean lagiMakanPlant = false;
+                Rectangle recZom = new Rectangle(i.getX(),i.getY(),62,100);
+                for (Plant j : plantDitanam){
+                    Rectangle recPlant = new Rectangle(j.getX(),j.getY(),74,73);
+                    if (recZom.intersects(recPlant)){
+                        lagiMakanPlant = true;
+                        if(i.getTerakhirMakan() + i.getWaktuTiapMakan() <= ctrDetik) {
+                            j.setHp(j.getHp() - i.getDamage());
+                            i.setTerakhirGerak(ctrDetik);
+                        }
+                    }
+                }
+                if(i.getTerakhirGerak() + 10 <= ctrDetik && lagiMakanPlant == false) {
                     i.setX(i.getX() - i.getKecepatan());
                     i.setTerakhirGerak(ctrDetik);
                 }
-                Rectangle reczom = new Rectangle(i.getX(),i.getY(),62,100);
-                for (Plant j : plantDitanam){
-                    Rectangle recplan = new Rectangle(j.getX(),j.getY(),74,73);
-                    if (reczom.intersects(recplan)){
-                        System.out.println("Kena");
-                    }
+            }
+            for(int i = plantDitanam.size() - 1; i >= 0; i--) {
+                if(plantDitanam.get(i).getHp() < 0) {
+                    plantDitanam.remove(i);
                 }
             }
             repaint();
@@ -350,7 +359,7 @@ public class GameWindow extends javax.swing.JPanel {
         //Memasukan jenis zombie yang ada
         try {
             imageZombie = ImageIO.read(new File("images/normalZombie.png"));
-            listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 30, 3, 0, 5));
+            listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 30, 3, 30));
         } catch (IOException ex) {
             System.out.println("Gambar Zombie Normal tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);

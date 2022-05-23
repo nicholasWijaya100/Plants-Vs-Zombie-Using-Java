@@ -23,7 +23,7 @@ public abstract class Zombie implements DrawInterface, Cloneable {
     protected int kecepatan;
     protected int terakhirGerak;
 
-    public Zombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, double terakhirMakan, int kecepatan) {
+    public Zombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, int kecepatan) {
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.zombieImage = zombieImage;
@@ -31,7 +31,7 @@ public abstract class Zombie implements DrawInterface, Cloneable {
         this.y = y;
         this.damage = damage;
         this.waktuTiapMakan = waktuTiapMakan;
-        this.terakhirMakan = terakhirMakan;
+        this.terakhirMakan = 0;
         this.kecepatan = kecepatan;
         this.terakhirGerak = 0;
     }

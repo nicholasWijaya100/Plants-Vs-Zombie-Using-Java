@@ -12,7 +12,7 @@ import java.awt.Image;
  */
 public class NormalZombie extends Zombie{
 
-    public NormalZombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, double terakhirMakan, int kecepatan) {
-        super(maxHp, zombieImage, x, y, damage, waktuTiapMakan, terakhirMakan, kecepatan);
+    public NormalZombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, int kecepatan) {
+        super(maxHp, zombieImage, x, y, damage, waktuTiapMakan, kecepatan);
     }
 }
