@@ -18,8 +18,8 @@ public class ShowUserFrame extends javax.swing.JFrame {
     public ShowUserFrame() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(811, 607);
         this.setContentPane(new ShowUserPanel());
+//        this.setSize(811, 607);
     }
 
     /**

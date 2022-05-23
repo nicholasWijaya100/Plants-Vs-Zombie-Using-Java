@@ -149,6 +149,9 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="user3">
       <Properties>

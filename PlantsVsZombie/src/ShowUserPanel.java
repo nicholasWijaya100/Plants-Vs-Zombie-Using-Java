@@ -29,6 +29,13 @@ public class ShowUserPanel extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try{
+            user1.setText(Driver.player.get(0).getUsername());
+        }catch(Exception e){
+            user1.setText("-");
+        }
+        
         try{
             user2.setText(Driver.player.get(1).getUsername());
         }catch(Exception e){
@@ -116,6 +123,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         user1.setText(Driver.player.get(0).getUsername());
         user1.setToolTipText("");
         user1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        user1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user1MouseClicked(evt);
+            }
+        });
 
         user3.setBackground(new java.awt.Color(255, 255, 255));
         user3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -190,13 +202,28 @@ public class ShowUserPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Del_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Del_BtnMouseClicked
-        // TODO add your handling code here:
+        Driver p = new Driver();
+        if (p.player.size()==1) {
+            p.player.remove(0);
+            RegisterAccountFrame RAF = new RegisterAccountFrame();
+            RAF.setVisible(true);
+            RAF.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }else{
+            p.player.remove(0);
+            MainMenuFrame MM = new MainMenuFrame();
+            MM.setVisible(true);
+            MM.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_Del_BtnMouseClicked
 
     private void Can_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Can_BtnMouseClicked
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
         MM.setLocationRelativeTo(null);
+        ShowUserFrame show = new ShowUserFrame();
+        show.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_Can_BtnMouseClicked
 
@@ -204,6 +231,8 @@ public class ShowUserPanel extends javax.swing.JPanel {
         RegisterAccountFrame RAF = new RegisterAccountFrame();
         RAF.setVisible(true);
         RAF.setLocationRelativeTo(null);
+        ShowUserFrame show = new ShowUserFrame();
+        show.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_New_BtnMouseClicked
 
@@ -211,8 +240,14 @@ public class ShowUserPanel extends javax.swing.JPanel {
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
         MM.setLocationRelativeTo(null);
+        ShowUserFrame show = new ShowUserFrame();
         this.setVisible(false);
+        show.setVisible(false);
     }//GEN-LAST:event_Ok_BtnMouseClicked
+
+    private void user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseClicked
+        
+    }//GEN-LAST:event_user1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

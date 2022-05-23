@@ -144,7 +144,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
             }
         });
         mainMenu1.add(Quit);
-        Quit.setBounds(970, 659, 82, 124);
+        Quit.setBounds(910, 590, 82, 124);
 
         Options.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Options.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -158,7 +158,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
             }
         });
         mainMenu1.add(Options);
-        Options.setBounds(783, 632, 92, 123);
+        Options.setBounds(720, 580, 92, 123);
 
         usernameLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
