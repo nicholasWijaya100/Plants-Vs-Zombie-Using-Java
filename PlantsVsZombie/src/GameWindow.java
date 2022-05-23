@@ -169,6 +169,96 @@ public class GameWindow extends javax.swing.JPanel {
                 } else if(x >= 200 && x < 300 && y >= 480 && y <= 600) {
                     xSet = 255;
                     ySet = 610;
+                } else if(x >= 300 && x < 400 && y >= 0 && y < 120) {
+                    xSet = 370;
+                    ySet = 120;
+                } else if(x >= 300 && x < 400 && y >= 120 && y < 240) {
+                    xSet = 370;
+                    ySet = 240;
+                } else if(x >= 300 && x < 400 && y >= 240 && y < 360) {
+                    xSet = 370;
+                    ySet = 360;
+                } else if(x >= 300 && x < 400 && y >= 360 && y < 480) {
+                    xSet = 370;
+                    ySet = 480;
+                } else if(x >= 300 && x < 400 && y >= 480 && y <= 600) {
+                    xSet = 370;
+                    ySet = 610;
+                } else if(x >= 400 && x < 500 && y >= 0 && y < 120) {
+                    xSet = 465;
+                    ySet = 120;
+                } else if(x >= 400 && x < 500 && y >= 120 && y < 240) {
+                    xSet = 465;
+                    ySet = 240;
+                } else if(x >= 400 && x < 500 && y >= 240 && y < 360) {
+                    xSet = 465;
+                    ySet = 360;
+                } else if(x >= 400 && x < 500 && y >= 360 && y < 480) {
+                    xSet = 465;
+                    ySet = 480;
+                } else if(x >= 400 && x < 500 && y >= 480 && y <= 600) {
+                    xSet = 465;
+                    ySet = 610;
+                } else if(x >= 500 && x < 600 && y >= 0 && y < 120) {
+                    xSet = 570;
+                    ySet = 120;
+                } else if(x >= 500 && x < 600 && y >= 120 && y < 240) {
+                    xSet = 570;
+                    ySet = 240;
+                } else if(x >= 500 && x < 600 && y >= 240 && y < 360) {
+                    xSet = 570;
+                    ySet = 360;
+                } else if(x >= 500 && x < 600 && y >= 360 && y < 480) {
+                    xSet = 570;
+                    ySet = 480;
+                } else if(x >= 500 && x < 600 && y >= 480 && y < 600) {
+                    xSet = 570;
+                    ySet = 610;
+                } else if(x >= 600 && x < 700 && y >= 0 && y < 120) {
+                    xSet = 670;
+                    ySet = 120;
+                } else if(x >= 600 && x < 700 && y >= 120 && y < 240) {
+                    xSet = 670;
+                    ySet = 240;
+                } else if(x >= 600 && x < 700 && y >= 240 && y < 360) {
+                    xSet = 670;
+                    ySet = 360;
+                } else if(x >= 600 && x < 700 && y >= 360 && y < 480) {
+                    xSet = 670;
+                    ySet = 480;
+                } else if(x >= 600 && x < 700 && y >= 480 && y <= 600) {
+                    xSet = 670;
+                    ySet = 610;
+                } else if(x >= 700 && x < 800 && y >= 0 && y < 120) {
+                    xSet = 770;
+                    ySet = 120;
+                } else if(x >= 700 && x < 800 && y >= 120 && y < 240) {
+                    xSet = 770;
+                    ySet = 240;
+                } else if(x >= 700 && x < 800 && y >= 240 && y < 360) {
+                    xSet = 770;
+                    ySet = 360;
+                } else if(x >= 700 && x < 800 && y >= 360 && y < 480) {
+                    xSet = 770;
+                    ySet = 480;
+                } else if(x >= 700 && x < 800 && y >= 480 && y <= 600) {
+                    xSet = 770;
+                    ySet = 610;
+                } else if(x >= 800 && x <= 900 && y >= 0 && y < 120) {
+                    xSet = 870;
+                    ySet = 120;
+                } else if(x >= 800 && x <= 900 && y >= 120 && y < 240) {
+                    xSet = 870;
+                    ySet = 240;
+                } else if(x >= 800 && x <= 900 && y >= 240 && y < 360) {
+                    xSet = 870;
+                    ySet = 360;
+                } else if(x >= 800 && x <= 900 && y >= 360 && y < 480) {
+                    xSet = 870;
+                    ySet = 480;
+                } else if(x >= 800 && x <= 900 && y >= 480 && y <= 600) {
+                    xSet = 870;
+                    ySet = 610;
                 }
                 if(xSet != 0 && ySet != 0) {
                     try {
