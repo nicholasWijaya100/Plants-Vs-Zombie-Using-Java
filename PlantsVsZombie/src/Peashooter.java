@@ -74,7 +74,7 @@ public class Peashooter extends Plant{
 
     @Override
     public void draw(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        g.drawImage(this.plantImage, x, y, null);
     }
     
     @Override

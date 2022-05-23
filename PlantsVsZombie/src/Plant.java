@@ -2,7 +2,7 @@
 import java.awt.Image;
 import javax.swing.Icon;
 
-public abstract class Plant implements DrawInterface{
+public abstract class Plant implements DrawInterface, Cloneable{
     protected int maxHp;
     protected int hp;
     protected Image plantImage;

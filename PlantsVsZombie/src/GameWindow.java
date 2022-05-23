@@ -1,6 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -14,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.Timer;
 
 public class GameWindow extends javax.swing.JPanel {
 
@@ -24,13 +26,48 @@ public class GameWindow extends javax.swing.JPanel {
     Image menuImage;
     Image imagePlant;
     Image imagePea;
+    Image imageZombie;
     ArrayList<Plant> listPlant = new ArrayList<>();
+    ArrayList<Zombie> listZombie = new ArrayList<>();
     ArrayList<Plant> plantDitanam = new ArrayList<>();
+    ArrayList<Zombie> zombieDiLawn = new ArrayList<>();
     Plant selectedPlant;
     JButton btnPilihSunflower = null;
     boolean pilihTile = false;
     int x;
     int y;
+    int ctrDetik = 0;
+    Timer tmr = new Timer(100, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ctrDetik++;
+            if(ctrDetik == 5) {
+                try {
+                    Zombie tempZombie = (Zombie) listZombie.get(0).clone();
+                    tempZombie.setX(950);
+                    tempZombie.setY(120);
+                    tempZombie.setKecepatan(30);
+                    zombieDiLawn.add(tempZombie);
+                } catch (CloneNotSupportedException ex) {
+                    Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            for(Zombie i : zombieDiLawn) {
+                if(i.getTerakhirGerak() + 10 == ctrDetik) {
+                    i.setX(i.getX() - i.getKecepatan());
+                    i.setTerakhirGerak(ctrDetik);
+                }
+                Rectangle reczom = new Rectangle(i.getX(),i.getY(),62,100);
+                for (Plant j : plantDitanam){
+                    Rectangle recplan = new Rectangle(j.getX(),j.getY(),74,73);
+                    if (reczom.intersects(recplan)){
+                        System.out.println("Kena");
+                    }
+                }
+            }
+            repaint();
+        }
+    });
     ActionListener actionPilihSunflower = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -85,42 +122,91 @@ public class GameWindow extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(selectedPlant != null) {
+                int xSet = 0;
+                int ySet = 0;
                 if(x >= 0 && x < 100 && y >= 0 && y < 120) {
-                    System.out.println("0,0");
-//                    try {
-//                        Plant copy = (Plant)selectedPlant.clone();
-//                        copy.setX(65);
-//                        copy.setY(120);
-//                        plantDitanam.add(copy);
-//                    } catch (CloneNotSupportedException ex) {
-//                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-                    selectedPlant = null;
+                    xSet = 65;
+                    ySet = 120;
+                } else if(x >= 0 && x < 100 && y >= 120 && y < 240) {
+                    xSet = 65;
+                    ySet = 240;
+                } else if(x >= 0 && x < 100 && y >= 240 && y < 360) {
+                    xSet = 65;
+                    ySet = 360;
+                } else if(x >= 0 && x < 100 && y >= 360 && y < 480) {
+                    xSet = 65;
+                    ySet = 480;
+                } else if(x >= 0 && x < 100 && y >= 480 && y <= 600) {
+                    xSet = 65;
+                    ySet = 610;
+                } else if(x >= 100 && x < 200 && y >= 0 && y < 120) {
+                    xSet = 160;
+                    ySet = 120;
+                } else if(x >= 100 && x < 200 && y >= 120 && y < 240) {
+                    xSet = 160;
+                    ySet = 240;
+                } else if(x >= 100 && x < 200 && y >= 240 && y < 360) {
+                    xSet = 160;
+                    ySet = 360;
+                } else if(x >= 100 && x < 200 && y >= 360 && y < 480) {
+                    xSet = 160;
+                    ySet = 480;
+                } else if(x >= 100 && x < 200 && y >= 480 && y <= 600) {
+                    xSet = 160;
+                    ySet = 610;
+                } else if(x >= 200 && x < 300 && y >= 0 && y < 120) {
+                    xSet = 255;
+                    ySet = 120;
+                } else if(x >= 200 && x < 300 && y >= 120 && y < 240) {
+                    xSet = 255;
+                    ySet = 240;
+                } else if(x >= 200 && x < 300 && y >= 240 && y < 360) {
+                    xSet = 255;
+                    ySet = 360;
+                } else if(x >= 200 && x < 300 && y >= 360 && y < 480) {
+                    xSet = 255;
+                    ySet = 480;
+                } else if(x >= 200 && x < 300 && y >= 480 && y <= 600) {
+                    xSet = 255;
+                    ySet = 610;
                 }
+                if(xSet != 0 && ySet != 0) {
+                    try {
+                        Plant copy = (Plant)selectedPlant.clone();
+                        copy.setX(xSet);
+                        copy.setY(ySet);
+                        plantDitanam.add(copy);
+                    } catch (CloneNotSupportedException ex) {
+                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                selectedPlant = null;
             }
         }
     };
     public GameWindow() {
         initComponents();
         this.setSize(1000, 752);
-        
+        tmr.start();
         try {
+
             menuImage = ImageIO.read(new File("images/mainBG.png"));
         } catch (IOException ex) {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        //Image icon = new ImageIcon(new URL("http://i.stack.imgur.com/KSnus.gif")).getImage();
         //Memasukkan jenis plant ke dalam program
         try { 
-            imagePlant = ImageIO.read(new File("images/sunflower.gif"));
+            //imagePlant = ImageIO.read(new File("images/sunflower.gif"));
+            imagePlant = new ImageIcon("images/sunflower.gif").getImage();
             listPlant.add(new Sunflower(5, 100, imagePlant, 160, 610, 50));
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             System.out.println("Gambar Sunflower tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try { 
-            imagePlant = ImageIO.read(new File("images/peashooter.gif"));
+            imagePlant = new ImageIcon("images/peashooter.gif").getImage();
             imagePea = ImageIO.read(new File("images/pea.png"));
             listPlant.add(new Peashooter(imagePea, 20, 5, 100, imagePlant, 160, 610, 100));
         } catch (IOException ex) {
@@ -129,11 +215,20 @@ public class GameWindow extends javax.swing.JPanel {
         }
         
         try { 
-            imagePlant = ImageIO.read(new File("images/freezepeashooter.gif"));
+            imagePlant = new ImageIcon("images/freezepeashooter.gif").getImage();
             imagePea = ImageIO.read(new File("images/freezepea.png"));
             listPlant.add(new Peashooter(imagePea, 20, 5, 100, imagePlant, 160, 610, 175));
         } catch (IOException ex) {
             System.out.println("Gambar Snow Pea tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Memasukan jenis zombie yang ada
+        try {
+            imageZombie = ImageIO.read(new File("images/normalZombie.png"));
+            listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 30, 3, 0, 5));
+        } catch (IOException ex) {
+            System.out.println("Gambar Zombie Normal tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -168,6 +263,9 @@ public class GameWindow extends javax.swing.JPanel {
         g.clearRect(0, 0, 1000, 752);
         g.drawImage(menuImage, 0, 0, 1000, 752, null);
         for(Plant i : plantDitanam) {
+            i.draw(g);
+        }
+        for(Zombie i : zombieDiLawn) {
             i.draw(g);
         }
     }
