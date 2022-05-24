@@ -105,6 +105,26 @@ public class GameWindow extends javax.swing.JPanel {
             for(Peluruh i : peluruhDiLawn) {
                 i.setX(i.getX() + 10);
             }
+            for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
+                if(peluruhDiLawn.get(i).getX() >= 1000) {
+                    peluruhDiLawn.remove(i);
+                }
+            }
+            for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
+                Rectangle recPeluruh = new Rectangle(peluruhDiLawn.get(i).getX(), peluruhDiLawn.get(i).getY(), 28, 28);
+                for(Zombie j : zombieDiLawn) {
+                    Rectangle recZom = new Rectangle(j.getX(), j.getY(), 62, 100);
+                    if(recPeluruh.intersects(recZom)) {
+                        j.setHp(j.getHp() - peluruhDiLawn.get(i).getDamage());
+                        peluruhDiLawn.remove(i);
+                    }
+                }
+            }
+            for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
+                if(zombieDiLawn.get(i).getHp() <= 0) {
+                    zombieDiLawn.remove(i);
+                }
+            }
             repaint();
         }
     });
