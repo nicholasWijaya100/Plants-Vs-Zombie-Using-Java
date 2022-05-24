@@ -29,8 +29,10 @@ public class GameWindow extends javax.swing.JPanel {
     Image imageZombie;
     ArrayList<Plant> listPlant = new ArrayList<>();
     ArrayList<Zombie> listZombie = new ArrayList<>();
+    static ArrayList<Peluruh> listPeluruh = new ArrayList<>();
     ArrayList<Plant> plantDitanam = new ArrayList<>();
     ArrayList<Zombie> zombieDiLawn = new ArrayList<>();
+    static ArrayList<Peluruh> peluruhDiLawn = new ArrayList<>();
     Plant selectedPlant;
     JButton btnPilihSunflower = null;
     boolean pilihTile = false;
@@ -73,6 +75,35 @@ public class GameWindow extends javax.swing.JPanel {
                 if(plantDitanam.get(i).getHp() < 0) {
                     plantDitanam.remove(i);
                 }
+            }
+            for(Zombie i : zombieDiLawn) {
+                for(Plant j : plantDitanam) {
+                    if(i.getY() == j.getY()) {
+                       if(j instanceof Peashooter) {
+                           ((Peashooter)j).setTembakAktif(true);
+                       } else if(j instanceof SnowPea) {
+                           ((SnowPea)j).setTembakAktif(true);
+                       }
+                    }
+                }
+            }
+            for(Plant i : plantDitanam) {
+                if(i instanceof Peashooter && ((Peashooter)i).isTembakAktif() == true) {
+                    if(((Peashooter)i).getTerakhirTembak() + ((Peashooter)i).getWaktuTiapTembak() <= ctrDetik) {
+                        i.shoot(listPeluruh, peluruhDiLawn);
+                        ((Peashooter)i).setTerakhirTembak(ctrDetik);
+                    }
+                    ((Peashooter)i).setTembakAktif(false);
+                } else if(i instanceof SnowPea && ((SnowPea)i).isTembakAktif() == true) {
+                    if(((SnowPea)i).getTerakhirTembak() + ((SnowPea)i).getWaktuTiapTembak() <= ctrDetik) {
+                        i.shoot(listPeluruh, peluruhDiLawn);
+                        ((SnowPea)i).setTerakhirTembak(ctrDetik);
+                    }
+                    ((SnowPea)i).setTembakAktif(false);
+                }
+            }
+            for(Peluruh i : peluruhDiLawn) {
+                i.setX(i.getX() + 10);
             }
             repaint();
         }
@@ -304,6 +335,9 @@ public class GameWindow extends javax.swing.JPanel {
     public GameWindow() {
         initComponents();
         this.setSize(1000, 752);
+        plantDitanam = new ArrayList<>();
+        zombieDiLawn = new ArrayList<>();
+        peluruhDiLawn = new ArrayList<>();
         tmr.start();
         try {
 
@@ -324,18 +358,16 @@ public class GameWindow extends javax.swing.JPanel {
         
         try { 
             imagePlant = new ImageIcon("images/peashooter.gif").getImage();
-            imagePea = ImageIO.read(new File("images/pea.png"));
-            listPlant.add(new Peashooter(imagePea, 20, 5, 100, imagePlant, 160, 610, 100));
-        } catch (IOException ex) {
+            listPlant.add(new Peashooter(15, 100, imagePlant, 160, 610, 100));
+        } catch (Exception ex) {
             System.out.println("Gambar Peashooter tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try { 
             imagePlant = new ImageIcon("images/freezepeashooter.gif").getImage();
-            imagePea = ImageIO.read(new File("images/freezepea.png"));
-            listPlant.add(new Peashooter(imagePea, 20, 5, 100, imagePlant, 160, 610, 175));
-        } catch (IOException ex) {
+            listPlant.add(new SnowPea(15, 100, imagePlant, 160, 610, 175));
+        } catch (Exception ex) {
             System.out.println("Gambar Snow Pea tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -362,6 +394,23 @@ public class GameWindow extends javax.swing.JPanel {
             listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 30, 3, 30));
         } catch (IOException ex) {
             System.out.println("Gambar Zombie Normal tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Memasukkan jenis peluruh plant atau zombie yang ada
+        try {
+            imagePea = ImageIO.read(new File("images/pea.png"));
+            listPeluruh.add(new PeluruhGreenPea(0, 0, 20, imagePea, 30, 0));
+        } catch (Exception ex) {
+            System.out.println("Gambar green pea tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            imagePea = ImageIO.read(new File("images/freezepea.png"));
+            listPeluruh.add(new PeluruhIcePea(0, 0, 20, imagePea, 30, 0));
+        } catch (Exception ex) {
+            System.out.println("Gambar ice pea tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -409,6 +458,9 @@ public class GameWindow extends javax.swing.JPanel {
             i.draw(g);
         }
         for(Zombie i : zombieDiLawn) {
+            i.draw(g);
+        }
+        for(Peluruh i : peluruhDiLawn) {
             i.draw(g);
         }
     }

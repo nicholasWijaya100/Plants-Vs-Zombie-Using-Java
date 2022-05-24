@@ -1,6 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,7 +24,7 @@ public class Wallnut extends Plant{
     }
 
     @Override
-    public void shoot() {
+    public void shoot(ArrayList<Peluruh> peluruhList, ArrayList<Peluruh> peluruhDiLawn) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

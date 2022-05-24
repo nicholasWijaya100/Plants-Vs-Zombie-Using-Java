@@ -1,6 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 
 public class Sunflower extends Plant{
@@ -67,7 +68,7 @@ public class Sunflower extends Plant{
     }
 
     @Override
-    public void shoot() {
+    public void shoot(ArrayList<Peluruh> peluruhList, ArrayList<Peluruh> peluruhDiLawn) {
         System.out.println("Sunflower cannot shoot");
     }
 

@@ -1,5 +1,6 @@
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 
 public abstract class Plant implements DrawInterface, Cloneable{
@@ -20,7 +21,7 @@ public abstract class Plant implements DrawInterface, Cloneable{
     }
     
     public abstract void generateSun();
-    public abstract void shoot();
+    public abstract void shoot(ArrayList<Peluruh> peluruhList, ArrayList<Peluruh> peluruhDiLawn);
     public abstract void explode();
 
     public int getHp() {
