@@ -13,7 +13,6 @@ public class Player {
     private String nama_asli;
     private int umur;
     private int highscore;
-    private int jumlahSun = 150;
     private int skor = 0;
 
     public Player(String username, String password, String nama_asli, int umur, int highscore) {
@@ -63,21 +62,4 @@ public class Player {
     public void setHighscore(int highscore) {
         this.highscore = highscore;
     }
-
-    public int getJumlahSun() {
-        return jumlahSun;
-    }
-
-    public void setJumlahSun(int jumlahSun) {
-        this.jumlahSun = jumlahSun;
-    }
-
-    public int getSkor() {
-        return skor;
-    }
-
-    public void setSkor(int skor) {
-        this.skor = skor;
-    }
-    
 }

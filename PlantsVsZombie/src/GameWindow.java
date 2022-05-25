@@ -47,12 +47,14 @@ public class GameWindow extends javax.swing.JPanel {
     int marginKiri = 48;
     int marginAtas = 110;
     int ctrDetik = 0;
+    int jumlahSun = 50;
+    double score = 0;
     Timer tmr = new Timer(100, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             ctrDetik++;
             if(ctrDetik % 50 == 0) {
-                if(Driver.currentPlayer.getSkor() <= 1000){
+                if(score <= 1000){
                     try {
                         Zombie tempZombie = (Zombie) listZombie.get(0).clone();
                         int lawnZombie = rnd.nextInt(5) + 1;
@@ -77,7 +79,7 @@ public class GameWindow extends javax.swing.JPanel {
                     } catch (CloneNotSupportedException ex) {
                         Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else if(Driver.currentPlayer.getSkor() <= 2500){
+                }else if(score <= 2500){
                     try {
                         Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(2)).clone();
                         int lawnZombie = rnd.nextInt(5) + 1;
@@ -138,7 +140,6 @@ public class GameWindow extends javax.swing.JPanel {
             if(ctrDetik % 50 == 0){
                 Sun temp = new Sun();
                 temp.generateSun(sunGeneric, sunDiLawn);
-                System.out.println(String.valueOf(Driver.currentPlayer.getJumlahSun()));
             }
             
             //Cek Apakah Zombie makan plant atau tidak
@@ -213,17 +214,13 @@ public class GameWindow extends javax.swing.JPanel {
             for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
                 if(zombieDiLawn.get(i).getHp() <= 0) {
                     if(zombieDiLawn.get(i) instanceof NormalZombie){
-                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 100);
                         System.out.println("Normal Zombie mati");
                     }else if(zombieDiLawn.get(i) instanceof ConeheadZombie){
-                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 200);
                         System.out.println("Conehead Zombie mati");
                     }else if(zombieDiLawn.get(i) instanceof BucketHeadZombie){
-                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 300);
                         System.out.println("Buckethead Zombie mati");
                     }
                     zombieDiLawn.remove(i);
-                    System.out.println(Driver.currentPlayer.getSkor());
                 }
             }
             repaint();
@@ -285,7 +282,7 @@ public class GameWindow extends javax.swing.JPanel {
                 if(recMouse.intersects(recSun)) {
                     System.out.println("Sun hilang");
                     sunDiLawn.remove(i);
-                    Driver.currentPlayer.setJumlahSun(Driver.currentPlayer.getJumlahSun() + 25);
+                    jumlahSun = jumlahSun + 25;
                 }
             }
         }
@@ -622,6 +619,7 @@ public class GameWindow extends javax.swing.JPanel {
         for(Sun i : sunDiLawn) {
             i.draw(g);
         }
+        g.drawString(Integer.toString(jumlahSun), 55, 95);
     }
 
     /**
