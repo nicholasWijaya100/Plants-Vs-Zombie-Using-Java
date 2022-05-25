@@ -131,6 +131,9 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user2MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="user1">
       <Properties>
@@ -170,6 +173,9 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user3MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="user4">
       <Properties>
@@ -188,6 +194,9 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user4MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="user5">
       <Properties>
@@ -206,6 +215,9 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user5MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

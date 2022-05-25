@@ -75,7 +75,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
         mainMenu1 = new MainMenu();
         playBtn = new javax.swing.JButton();
         Users = new javax.swing.JButton();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         Quit = new javax.swing.JButton();
         Options = new javax.swing.JButton();
         usernameLabel = new javax.swing.JLabel();
@@ -112,20 +111,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
         });
         mainMenu1.add(Users);
         Users.setBounds(40, 173, 356, 70);
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        mainMenu1.add(jLayeredPane1);
-        jLayeredPane1.setBounds(422, 103, 100, 100);
 
         Quit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Quit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -229,7 +214,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton Options;
     private javax.swing.JButton Quit;
     private javax.swing.JButton Users;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private MainMenu mainMenu1;
     private javax.swing.JButton playBtn;
     private javax.swing.JLabel usernameLabel;

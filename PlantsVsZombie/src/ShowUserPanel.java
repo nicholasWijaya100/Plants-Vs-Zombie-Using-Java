@@ -12,6 +12,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
     /**
      * Creates new form ShowUserFrame
      */
+    public static int temp=0;
     Image menuImage = null;
     public ShowUserPanel() {
         initComponents();
@@ -116,6 +117,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         user2.setText(Driver.player.get(0).getUsername());
         user2.setToolTipText("");
         user2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        user2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user2MouseClicked(evt);
+            }
+        });
 
         user1.setBackground(new java.awt.Color(255, 255, 255));
         user1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -135,6 +141,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         user3.setText(Driver.player.get(0).getUsername());
         user3.setToolTipText("");
         user3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        user3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user3MouseClicked(evt);
+            }
+        });
 
         user4.setBackground(new java.awt.Color(255, 255, 255));
         user4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -142,6 +153,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         user4.setText(Driver.player.get(0).getUsername());
         user4.setToolTipText("");
         user4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        user4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user4MouseClicked(evt);
+            }
+        });
 
         user5.setBackground(new java.awt.Color(255, 255, 255));
         user5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -149,6 +165,11 @@ public class ShowUserPanel extends javax.swing.JPanel {
         user5.setText(Driver.player.get(0).getUsername());
         user5.setToolTipText("");
         user5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        user5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                user5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -210,7 +231,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
             RAF.setLocationRelativeTo(null);
             this.setVisible(false);
         }else{
-            p.player.remove(0);
+            p.player.remove(temp);
             MainMenuFrame MM = new MainMenuFrame();
             MM.setVisible(true);
             MM.setLocationRelativeTo(null);
@@ -246,8 +267,24 @@ public class ShowUserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Ok_BtnMouseClicked
 
     private void user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseClicked
-        
+        temp=0;
     }//GEN-LAST:event_user1MouseClicked
+
+    private void user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user2MouseClicked
+        temp=1;
+    }//GEN-LAST:event_user2MouseClicked
+
+    private void user3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user3MouseClicked
+        temp=2;
+    }//GEN-LAST:event_user3MouseClicked
+
+    private void user4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user4MouseClicked
+        temp=3;
+    }//GEN-LAST:event_user4MouseClicked
+
+    private void user5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user5MouseClicked
+        temp=4;
+    }//GEN-LAST:event_user5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
