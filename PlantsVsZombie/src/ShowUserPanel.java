@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class ShowUserPanel extends javax.swing.JPanel {
 
@@ -13,6 +14,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
      * Creates new form ShowUserFrame
      */
     public static int temp=0;
+    public static int select=0;
     Image menuImage = null;
     public ShowUserPanel() {
         initComponents();
@@ -42,21 +44,18 @@ public class ShowUserPanel extends javax.swing.JPanel {
         }catch(Exception e){
             user2.setText("-");
         }
-
         
         try{
             user3.setText(Driver.player.get(2).getUsername());
         }catch(Exception e){
             user3.setText("-");
         }
-
         
         try{
             user4.setText(Driver.player.get(3).getUsername());
         }catch(Exception e){
             user4.setText("-");
         }
-
         
         try{
             user5.setText(Driver.player.get(4).getUsername());
@@ -223,15 +222,22 @@ public class ShowUserPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Del_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Del_BtnMouseClicked
-        Driver p = new Driver();
-        if (p.player.size()==1) {
-            p.player.remove(0);
-            RegisterAccountFrame RAF = new RegisterAccountFrame();
-            RAF.setVisible(true);
-            RAF.setLocationRelativeTo(null);
-            this.setVisible(false);
+         if (Driver.player.size()==1) {
+            try {
+                Driver.player.remove(temp);
+                RegisterAccountFrame RAF = new RegisterAccountFrame();
+                RAF.setVisible(true);
+                RAF.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
+            }
         }else{
-            p.player.remove(temp);
+            try {
+                Driver.player.remove(temp);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
+            }
             MainMenuFrame MM = new MainMenuFrame();
             MM.setVisible(true);
             MM.setLocationRelativeTo(null);
@@ -249,15 +255,19 @@ public class ShowUserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Can_BtnMouseClicked
 
     private void New_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_BtnMouseClicked
-        RegisterAccountFrame RAF = new RegisterAccountFrame();
-        RAF.setVisible(true);
-        RAF.setLocationRelativeTo(null);
-        ShowUserFrame show = new ShowUserFrame();
-        show.setVisible(false);
-        this.setVisible(false);
+        if (Driver.player.size()<5) {
+            RegisterAccountFrame RAF = new RegisterAccountFrame();
+            RAF.setVisible(true);
+            RAF.setLocationRelativeTo(null);
+            ShowUserFrame show = new ShowUserFrame();
+            show.setVisible(false);
+            this.setVisible(false);
+        }else
+            JOptionPane.showMessageDialog(this, "Data user telah penuh!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
+//        Driver.currentPlayer = Driver.player.get(select);
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
         MM.setLocationRelativeTo(null);
@@ -268,22 +278,27 @@ public class ShowUserPanel extends javax.swing.JPanel {
 
     private void user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseClicked
         temp=0;
+        select=0;
     }//GEN-LAST:event_user1MouseClicked
 
     private void user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user2MouseClicked
         temp=1;
+        select=1;
     }//GEN-LAST:event_user2MouseClicked
 
     private void user3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user3MouseClicked
         temp=2;
+        select=2;
     }//GEN-LAST:event_user3MouseClicked
 
     private void user4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user4MouseClicked
         temp=3;
+        select=3;
     }//GEN-LAST:event_user4MouseClicked
 
     private void user5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user5MouseClicked
         temp=4;
+        select=4;
     }//GEN-LAST:event_user5MouseClicked
 
 
