@@ -14,6 +14,7 @@ public class Player {
     private int umur;
     private int highscore;
     private int jumlahSun = 150;
+    private int skor = 0;
 
     public Player(String username, String password, String nama_asli, int umur, int highscore) {
         this.username = username;
@@ -70,4 +71,13 @@ public class Player {
     public void setJumlahSun(int jumlahSun) {
         this.jumlahSun = jumlahSun;
     }
+
+    public int getSkor() {
+        return skor;
+    }
+
+    public void setSkor(int skor) {
+        this.skor = skor;
+    }
+    
 }

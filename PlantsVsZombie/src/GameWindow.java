@@ -24,6 +24,8 @@ public class GameWindow extends javax.swing.JPanel {
      * Creates new form GameWindow
      */
     
+    Random rnd = new Random();
+    
     Image menuImage;
     Image imagePlant;
     Image imagePea;
@@ -49,14 +51,82 @@ public class GameWindow extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             ctrDetik++;
-            if(ctrDetik == 5) {
-                try {
-                    Zombie tempZombie = (Zombie) listZombie.get(0).clone();
-                    tempZombie.setX(950);
-                    tempZombie.setY(120);
-                    zombieDiLawn.add(tempZombie);
-                } catch (CloneNotSupportedException ex) {
-                    Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+            if(ctrDetik % 50 == 0) {
+                if(Driver.currentPlayer.getSkor() <= 1000){
+                    try {
+                        Zombie tempZombie = (Zombie) listZombie.get(0).clone();
+                        int lawnZombie = rnd.nextInt(5) + 1;
+                        if(lawnZombie == 1){
+                            tempZombie.setX(950); // lawn 1
+                            tempZombie.setY(120);
+                        }else if(lawnZombie == 2){
+                            tempZombie.setX(950); // lawn 2
+                            tempZombie.setY(240);
+                        }else if(lawnZombie == 3){
+                            tempZombie.setX(950); // lawn 3
+                            tempZombie.setY(360);
+                        }else if(lawnZombie == 4){
+                            tempZombie.setX(950); // lawn 4
+                            tempZombie.setY(480);
+                        }else if(lawnZombie == 5){
+                            tempZombie.setX(950); // lawn 5
+                            tempZombie.setY(610);
+                        }
+                        zombieDiLawn.add(tempZombie);
+                        System.out.println("Zombie spawn di lawn " + lawnZombie);
+                    } catch (CloneNotSupportedException ex) {
+                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else if(Driver.currentPlayer.getSkor() <= 2500){
+                    try {
+                        Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(2)).clone();
+                        int lawnZombie = rnd.nextInt(5) + 1;
+                        if(lawnZombie == 1){
+                            tempZombie.setX(950); // lawn 1
+                            tempZombie.setY(120);
+                        }else if(lawnZombie == 2){
+                            tempZombie.setX(950); // lawn 2
+                            tempZombie.setY(240);
+                        }else if(lawnZombie == 3){
+                            tempZombie.setX(950); // lawn 3
+                            tempZombie.setY(360);
+                        }else if(lawnZombie == 4){
+                            tempZombie.setX(950); // lawn 4
+                            tempZombie.setY(480);
+                        }else if(lawnZombie == 5){
+                            tempZombie.setX(950); // lawn 5
+                            tempZombie.setY(610);
+                        }
+                        zombieDiLawn.add(tempZombie);
+                        System.out.println("Zombie spawn di lawn " + lawnZombie);
+                    } catch (CloneNotSupportedException ex) {
+                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else{
+                    try {
+                        Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(3)).clone();
+                        int lawnZombie = rnd.nextInt(5) + 1;
+                        if(lawnZombie == 1){
+                            tempZombie.setX(950); // lawn 1
+                            tempZombie.setY(120);
+                        }else if(lawnZombie == 2){
+                            tempZombie.setX(950); // lawn 2
+                            tempZombie.setY(240);
+                        }else if(lawnZombie == 3){
+                            tempZombie.setX(950); // lawn 3
+                            tempZombie.setY(360);
+                        }else if(lawnZombie == 4){
+                            tempZombie.setX(950); // lawn 4
+                            tempZombie.setY(480);
+                        }else if(lawnZombie == 5){
+                            tempZombie.setX(950); // lawn 5
+                            tempZombie.setY(610);
+                        }
+                        zombieDiLawn.add(tempZombie);
+                        System.out.println("Zombie spawn di lawn " + lawnZombie);
+                    } catch (CloneNotSupportedException ex) {
+                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             for(Plant i : plantDitanam) {
@@ -142,7 +212,18 @@ public class GameWindow extends javax.swing.JPanel {
             }
             for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
                 if(zombieDiLawn.get(i).getHp() <= 0) {
+                    if(zombieDiLawn.get(i) instanceof NormalZombie){
+                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 100);
+                        System.out.println("Normal Zombie mati");
+                    }else if(zombieDiLawn.get(i) instanceof ConeheadZombie){
+                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 200);
+                        System.out.println("Conehead Zombie mati");
+                    }else if(zombieDiLawn.get(i) instanceof BucketHeadZombie){
+                        Driver.currentPlayer.setSkor(Driver.currentPlayer.getSkor() + 300);
+                        System.out.println("Buckethead Zombie mati");
+                    }
                     zombieDiLawn.remove(i);
+                    System.out.println(Driver.currentPlayer.getSkor());
                 }
             }
             repaint();
@@ -445,6 +526,24 @@ public class GameWindow extends javax.swing.JPanel {
             System.out.println("Gambar Zombie Normal tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try {
+            imageZombie = ImageIO.read(new File("images/coneheadZombie.png"));
+            listZombie.add(new ConeheadZombie(240, imageZombie, 0, 0, 30, 3, 25));
+        } catch (IOException ex) {
+            System.out.println("Gambar Conehead Zombie tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            imageZombie = ImageIO.read(new File("images/bucketheadZombie.png"));
+            listZombie.add(new BucketHeadZombie(400, imageZombie, 0, 0, 30, 3, 20));
+        } catch (IOException ex) {
+            System.out.println("Gambar Buckethead Zombie tidak ada");
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
         //Memasukkan jenis peluruh plant atau zombie yang ada
         try {

@@ -75,12 +75,15 @@ public class GameWindowFrame extends javax.swing.JFrame {
 
         gameWindow1 = new GameWindow();
         jumlahSun = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
 
         jumlahSun.setText(String.valueOf(Driver.currentPlayer.getJumlahSun()));
         jumlahSun.setToolTipText("");
+
+        jLabel1.setText(String.valueOf(Driver.currentPlayer.getSkor()));
 
         javax.swing.GroupLayout gameWindow1Layout = new javax.swing.GroupLayout(gameWindow1);
         gameWindow1.setLayout(gameWindow1Layout);
@@ -90,11 +93,17 @@ public class GameWindowFrame extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jumlahSun, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(809, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameWindow1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         gameWindow1Layout.setVerticalGroup(
             gameWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameWindow1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(42, 42, 42)
                 .addComponent(jumlahSun, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(640, Short.MAX_VALUE))
         );
@@ -116,6 +125,7 @@ public class GameWindowFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GameWindow gameWindow1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jumlahSun;
     // End of variables declaration//GEN-END:variables
 }
