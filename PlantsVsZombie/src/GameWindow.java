@@ -53,8 +53,9 @@ public class GameWindow extends javax.swing.JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             ctrDetik++;
+            score = score + 0.1;
             if(ctrDetik % 50 == 0) {
-                if(score <= 1000){
+                if(score <= 100){
                     try {
                         Zombie tempZombie = (Zombie) listZombie.get(0).clone();
                         int lawnZombie = rnd.nextInt(5) + 1;
@@ -79,7 +80,7 @@ public class GameWindow extends javax.swing.JPanel {
                     } catch (CloneNotSupportedException ex) {
                         Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else if(score <= 2500){
+                }else if(score <= 250){
                     try {
                         Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(2)).clone();
                         int lawnZombie = rnd.nextInt(5) + 1;
@@ -619,7 +620,7 @@ public class GameWindow extends javax.swing.JPanel {
         for(Sun i : sunDiLawn) {
             i.draw(g);
         }
-        g.drawString(Integer.toString(jumlahSun), 55, 95);
+        g.drawString(Integer.toString(jumlahSun), 50, 95);
     }
 
     /**
