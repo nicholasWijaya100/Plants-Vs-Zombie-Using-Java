@@ -27,17 +27,22 @@ public class GameWindow extends javax.swing.JPanel {
     Image imagePlant;
     Image imagePea;
     Image imageZombie;
+    Image imageSun;
     ArrayList<Plant> listPlant = new ArrayList<>();
     ArrayList<Zombie> listZombie = new ArrayList<>();
     static ArrayList<Peluruh> listPeluruh = new ArrayList<>();
+    static Sun sunGeneric;
     ArrayList<Plant> plantDitanam = new ArrayList<>();
     ArrayList<Zombie> zombieDiLawn = new ArrayList<>();
     static ArrayList<Peluruh> peluruhDiLawn = new ArrayList<>();
+    static ArrayList<Sun> sunDiLawn = new ArrayList<>();
     Plant selectedPlant;
     JButton btnPilihSunflower = null;
     boolean pilihTile = false;
     int x;
     int y;
+    int marginKiri = 48;
+    int marginAtas = 110;
     int ctrDetik = 0;
     Timer tmr = new Timer(100, new ActionListener() {
         @Override
@@ -53,6 +58,13 @@ public class GameWindow extends javax.swing.JPanel {
                     Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            for(Plant i : plantDitanam) {
+                if(i instanceof Sunflower && ((Sunflower)i).getTerakhirGenerateSun() + ((Sunflower)i).getWaktuGenerateSun() <= ctrDetik) {
+                   ((Sunflower)i).setTerakhirGenerateSun(ctrDetik);
+                   i.generateSun(sunGeneric, sunDiLawn, i.getX(), i.getY());
+                }
+            }
+            //Cek Apakah Zombie makan plant atau tidak
             for(Zombie i : zombieDiLawn) {
                 boolean lagiMakanPlant = false;
                 Rectangle recZom = new Rectangle(i.getX(),i.getY(),62,100);
@@ -71,6 +83,7 @@ public class GameWindow extends javax.swing.JPanel {
                     i.setTerakhirGerak(ctrDetik);
                 }
             }
+            //Cek Apakah plant sudah mati atau belum, apabila sudah di remove
             for(int i = plantDitanam.size() - 1; i >= 0; i--) {
                 if(plantDitanam.get(i).getHp() < 0) {
                     plantDitanam.remove(i);
@@ -178,6 +191,14 @@ public class GameWindow extends javax.swing.JPanel {
             x = e.getX();
             y = e.getY();
             System.out.println(x + "," + y);//these co-ords are relative to the component
+            Rectangle recMouse = new Rectangle(x - 1 + marginKiri, y - 1 + marginAtas, 2, 2);
+            for(int i = sunDiLawn.size() - 1; i >= 0; i--) {
+                Rectangle recSun = new Rectangle(sunDiLawn.get(i).getX(), sunDiLawn.get(i).getY(), 80, 80);
+                if(recMouse.intersects(recSun)) {
+                    System.out.println("Sun hilang");
+                    sunDiLawn.remove(i);
+                }
+            }
         }
 
         @Override
@@ -370,7 +391,7 @@ public class GameWindow extends javax.swing.JPanel {
         try { 
             //imagePlant = ImageIO.read(new File("images/sunflower.gif"));
             imagePlant = new ImageIcon("images/sunflower.gif").getImage();
-            listPlant.add(new Sunflower(5, 100, imagePlant, 160, 610, 50));
+            listPlant.add(new Sunflower(40, 100, imagePlant, 160, 610, 50));
         } catch (Exception ex) {
             System.out.println("Gambar Sunflower tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -434,6 +455,14 @@ public class GameWindow extends javax.swing.JPanel {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        try {
+            //Add genericSun
+            imageSun = ImageIO.read(new File("images/sun.png"));
+            sunGeneric = new Sun(0, 0, 20, imageSun);
+        } catch (IOException ex) {
+            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //Button Untuk pilih plant yang akan ditanam
         JButton btnPilihSunflower = new JButton("Sunflower");
         btnPilihSunflower.setBounds(110, 8, 64, 90);
@@ -462,7 +491,7 @@ public class GameWindow extends javax.swing.JPanel {
         
         //Button untuk select tile rumput
         JButton btnLawn = new JButton("");
-        btnLawn.setBounds(48, 110, 900, 600);
+        btnLawn.setBounds(marginKiri, marginAtas, 900, 600);
         btnLawn.addActionListener(pilihTileLawn);
         btnLawn.addMouseListener(mouseClickLocation);
         btnLawn.setContentAreaFilled(false);
@@ -481,6 +510,9 @@ public class GameWindow extends javax.swing.JPanel {
             i.draw(g);
         }
         for(Peluruh i : peluruhDiLawn) {
+            i.draw(g);
+        }
+        for(Sun i : sunDiLawn) {
             i.draw(g);
         }
     }

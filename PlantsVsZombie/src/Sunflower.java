@@ -2,6 +2,8 @@
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 
 public class Sunflower extends Plant{
@@ -63,8 +65,16 @@ public class Sunflower extends Plant{
     }
     
     @Override
-    public void generateSun() {
+    public void generateSun(Sun sunGeneric, ArrayList<Sun> sunDiLawn, int xFlower, int yFlower) {
         System.out.println("Sunflower create sun");
+        try {
+            Sun baru = (Sun) sunGeneric.clone();
+            baru.setX(xFlower);
+            baru.setY(yFlower + 10);
+            sunDiLawn.add(baru);
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(Sunflower.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

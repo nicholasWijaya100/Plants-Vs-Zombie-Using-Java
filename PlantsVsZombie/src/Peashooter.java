@@ -51,7 +51,7 @@ public class Peashooter extends Plant{
     }
     
     @Override
-    public void generateSun() {
+    public void generateSun(Sun sunGeneric, ArrayList<Sun> sunDiLawn, int xFlower, int yFlower) {
         System.out.println("Peashooter tidak bisa generate sun");
     }
 

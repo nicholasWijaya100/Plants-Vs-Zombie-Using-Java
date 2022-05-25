@@ -51,8 +51,8 @@ public class SnowPea extends Plant{
     }
 
     @Override
-    public void generateSun() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void generateSun(Sun sunGeneric, ArrayList<Sun> sunDiLawn, int xFlower, int yFlower) {
+        
     }
 
     @Override

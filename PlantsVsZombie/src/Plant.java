@@ -20,7 +20,7 @@ public abstract class Plant implements DrawInterface, Cloneable{
         this.cost = cost;
     }
     
-    public abstract void generateSun();
+    public abstract void generateSun(Sun sunGeneric, ArrayList<Sun> sunDiLawn, int xFlower, int yFlower);
     public abstract void shoot(ArrayList<Peluruh> peluruhList, ArrayList<Peluruh> peluruhDiLawn);
     public abstract void explode();
 
