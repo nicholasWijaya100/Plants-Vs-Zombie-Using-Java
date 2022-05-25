@@ -1,6 +1,10 @@
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,6 +26,10 @@ public class Sun implements Cloneable, DrawInterface{
         this.y = y;
         this.waktuSebelumHilang = waktuSebelumHilang;
         this.sunImage = sunImage;
+    }
+    
+    public Sun(){
+        
     }
 
     public int getX() {
@@ -48,6 +56,21 @@ public class Sun implements Cloneable, DrawInterface{
         this.waktuSebelumHilang = waktuSebelumHilang;
     }
 
+    public void generateSun(Sun sunGeneric, ArrayList<Sun> sunDiLawn) {
+        Random rnd = new Random();
+        int xBaru = rnd.nextInt(800)+100;
+        int yBaru = rnd.nextInt(300)+200;
+        System.out.println("Sun generated");
+        try {
+            Sun baru = (Sun) sunGeneric.clone();
+            baru.setX(xBaru);
+            baru.setY(yBaru);
+            sunDiLawn.add(baru);
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(Sunflower.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody

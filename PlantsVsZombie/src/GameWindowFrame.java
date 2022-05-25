@@ -74,20 +74,29 @@ public class GameWindowFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         gameWindow1 = new GameWindow();
+        jumlahSun = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
-        setPreferredSize(new java.awt.Dimension(1000, 300));
+
+        jumlahSun.setText(String.valueOf(Driver.currentPlayer.getJumlahSun()));
+        jumlahSun.setToolTipText("");
 
         javax.swing.GroupLayout gameWindow1Layout = new javax.swing.GroupLayout(gameWindow1);
         gameWindow1.setLayout(gameWindow1Layout);
         gameWindow1Layout.setHorizontalGroup(
             gameWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(gameWindow1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jumlahSun, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(809, Short.MAX_VALUE))
         );
         gameWindow1Layout.setVerticalGroup(
             gameWindow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 752, Short.MAX_VALUE)
+            .addGroup(gameWindow1Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jumlahSun, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(640, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,5 +116,6 @@ public class GameWindowFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GameWindow gameWindow1;
+    private javax.swing.JLabel jumlahSun;
     // End of variables declaration//GEN-END:variables
 }

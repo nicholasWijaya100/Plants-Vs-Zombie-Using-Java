@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -64,6 +65,12 @@ public class GameWindow extends javax.swing.JPanel {
                    i.generateSun(sunGeneric, sunDiLawn, i.getX(), i.getY());
                 }
             }
+            if(ctrDetik % 50 == 0){
+                Sun temp = new Sun();
+                temp.generateSun(sunGeneric, sunDiLawn);
+                System.out.println(String.valueOf(Driver.currentPlayer.getJumlahSun()));
+            }
+            
             //Cek Apakah Zombie makan plant atau tidak
             for(Zombie i : zombieDiLawn) {
                 boolean lagiMakanPlant = false;
@@ -140,7 +147,7 @@ public class GameWindow extends javax.swing.JPanel {
             }
             repaint();
         }
-    });
+    });    
     ActionListener actionPilihSunflower = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -197,6 +204,7 @@ public class GameWindow extends javax.swing.JPanel {
                 if(recMouse.intersects(recSun)) {
                     System.out.println("Sun hilang");
                     sunDiLawn.remove(i);
+                    Driver.currentPlayer.setJumlahSun(Driver.currentPlayer.getJumlahSun() + 25);
                 }
             }
         }
