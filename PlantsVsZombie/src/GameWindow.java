@@ -227,7 +227,7 @@ public class GameWindow extends javax.swing.JPanel {
             repaint();
         }
     });    
-    ActionListener actionPilihSunflower = new ActionListener() {
+    ActionListener actionPilihSunflower = new ActionListener() {    //click plant di deck
         @Override
         public void actionPerformed(ActionEvent e) {
             selectedPlant = listPlant.get(0);
@@ -446,13 +446,20 @@ public class GameWindow extends javax.swing.JPanel {
                     xSet = 870;
                     ySet = 610;
                 }
-                if(xSet != 0 && ySet != 0) {
+                if(xSet != 0 && ySet != 0) {    //Tanaman yang diselect diplant
+                    
                     try {
-                        Plant copy = (Plant)selectedPlant.clone();
-                        copy.setX(xSet);
-                        copy.setY(ySet);
-                        plantDitanam.add(copy);
-                    } catch (CloneNotSupportedException ex) {
+                        if(jumlahSun >= selectedPlant.cost){
+                            Plant copy = (Plant)selectedPlant.clone();
+                            copy.setX(xSet);
+                            copy.setY(ySet);
+                            plantDitanam.add(copy);
+                            System.out.println("planted");
+                            jumlahSun -= selectedPlant.cost;
+                        }else{
+                            System.out.println("Not enough sun, Sun : " + jumlahSun);
+                        }
+                    }catch (CloneNotSupportedException ex) {
                         Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
