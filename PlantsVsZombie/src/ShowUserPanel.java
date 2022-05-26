@@ -267,7 +267,7 @@ public class ShowUserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
-//        Driver.currentPlayer = Driver.player.get(select);
+        Driver.currentPlayer = Driver.player.get(select);
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
         MM.setLocationRelativeTo(null);
