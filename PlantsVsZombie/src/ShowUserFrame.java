@@ -1,5 +1,6 @@
 
 import java.awt.Image;
+import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,7 @@ public class ShowUserFrame extends javax.swing.JFrame {
     Image menuImage =null;
     public static int select=0;
     public static int temp=0;
+    public static Scanner sc = new Scanner(System.in);
     public ShowUserFrame() {
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -284,8 +286,6 @@ public class ShowUserFrame extends javax.swing.JFrame {
         MainMenuFrame MM = new MainMenuFrame();
         MM.setVisible(true);
         MM.setLocationRelativeTo(null);
-        ShowUserFrame show = new ShowUserFrame();
-        show.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_Can_BtnMouseClicked
 
@@ -294,21 +294,16 @@ public class ShowUserFrame extends javax.swing.JFrame {
             RegisterAccountFrame RAF = new RegisterAccountFrame();
             RAF.setVisible(true);
             RAF.setLocationRelativeTo(null);
-            ShowUserFrame show = new ShowUserFrame();
-            show.setVisible(false);
             this.setVisible(false);
         }else
         JOptionPane.showMessageDialog(this, "Data user telah penuh!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
-        Driver.currentPlayer = Driver.player.get(select);
-        MainMenuFrame MM = new MainMenuFrame();
-        MM.setVisible(true);
-        MM.setLocationRelativeTo(null);
-        ShowUserFrame show = new ShowUserFrame();
+        CheckPassword CP = new CheckPassword();
+        CP.setVisible(true);
+        CP.setLocationRelativeTo(null);
         this.setVisible(false);
-        show.setVisible(false);
     }//GEN-LAST:event_Ok_BtnMouseClicked
 
     private void user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user2MouseClicked
