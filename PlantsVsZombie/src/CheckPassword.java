@@ -66,7 +66,7 @@ public class CheckPassword extends javax.swing.JFrame {
 
         UserSelect.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         UserSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UserSelect.setText(Driver.currentPlayer.getUsername());
+        UserSelect.setText(Driver.player.get(ShowUserFrame.temp).getUsername());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,9 +86,8 @@ public class CheckPassword extends javax.swing.JFrame {
                                 .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(UserSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Password))))
+                                .addComponent(Password))
+                            .addComponent(UserSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );

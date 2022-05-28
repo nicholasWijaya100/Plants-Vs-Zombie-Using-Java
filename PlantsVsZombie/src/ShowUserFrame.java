@@ -296,14 +296,17 @@ public class ShowUserFrame extends javax.swing.JFrame {
             RAF.setLocationRelativeTo(null);
             this.setVisible(false);
         }else
-        JOptionPane.showMessageDialog(this, "Data user telah penuh!", "Warning!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Data user telah penuh!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
-        CheckPassword CP = new CheckPassword();
-        CP.setVisible(true);
-        CP.setLocationRelativeTo(null);
-        this.setVisible(false);
+        if (Driver.player.size()>select) {
+            CheckPassword CP = new CheckPassword();
+            CP.setVisible(true);
+            CP.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }else
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_Ok_BtnMouseClicked
 
     private void user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user2MouseClicked
