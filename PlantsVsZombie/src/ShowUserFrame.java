@@ -1,5 +1,6 @@
 
 import java.awt.Image;
+import java.sql.Statement;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,8 +20,7 @@ public class ShowUserFrame extends javax.swing.JFrame {
      * Creates new form ShowUserFrame
      */
     Image menuImage =null;
-    public static int select=0;
-    public static int temp=0;
+    public static Player selectedUser = null;
     public static Scanner sc = new Scanner(System.in);
     public ShowUserFrame() {
         initComponents();
@@ -249,19 +249,40 @@ public class ShowUserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void user4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user4MouseClicked
-        temp=3;
-        select=3;
+        try {
+            selectedUser = Driver.player.get(3);
+        } catch (Exception e) {
+            System.out.println("User not found");
+//          e.printStackTrace();
+        }
     }//GEN-LAST:event_user4MouseClicked
 
     private void user5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user5MouseClicked
-        temp=4;
-        select=4;
+        try {
+            selectedUser = Driver.player.get(4);
+        } catch (Exception e) {
+            System.out.println("User not found");
+//          e.printStackTrace();
+        }
     }//GEN-LAST:event_user5MouseClicked
 
     private void Del_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Del_BtnMouseClicked
-        if (Driver.player.size()==1) {
+//        try{
+//            String sql = "delete from gameuser where umur =";
+//            Statement  st = Driver.con.createStatement();
+//            st.execute(sql);
+//            Driver.player.add(new Player(tUsername,tPassword,tRealName,age,0));
+//            Driver.currentPlayer = Driver.player.get(0);
+//            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
+//        }catch(Exception e) {
+//            JOptionPane.showMessageDialog(this, "Data Gagal Disimpan", "Warning!", JOptionPane.ERROR_MESSAGE);
+//            e.printStackTrace();
+//        }
+        if(Driver.player.size() == 1) {
             try {
-                Driver.player.remove(temp);
+                Driver.player.remove(selectedUser);
+                selectedUser = null;
+                Driver.currentPlayer = null;
                 RegisterAccountFrame RAF = new RegisterAccountFrame();
                 RAF.setVisible(true);
                 RAF.setLocationRelativeTo(null);
@@ -269,9 +290,14 @@ public class ShowUserFrame extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
+        } else{
             try {
-                Driver.player.remove(temp);
+                Driver.player.remove(selectedUser);
+                for(Player i : Driver.player) {
+                    System.out.println(i.getUsername());
+                }
+                if(selectedUser == Driver.currentPlayer) Driver.currentPlayer = Driver.player.get(0);
+                selectedUser = null;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
             }
@@ -290,38 +316,48 @@ public class ShowUserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_Can_BtnMouseClicked
 
     private void New_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_BtnMouseClicked
-        if (Driver.player.size()<5) {
+        if (Driver.player.size() < 5) {
             RegisterAccountFrame RAF = new RegisterAccountFrame();
             RAF.setVisible(true);
             RAF.setLocationRelativeTo(null);
             this.setVisible(false);
-        }else
-            JOptionPane.showMessageDialog(this, "Data user telah penuh!", "Warning!", JOptionPane.ERROR_MESSAGE);
+        } else JOptionPane.showMessageDialog(this, "Jumlah User max telah tercapai!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_New_BtnMouseClicked
 
     private void Ok_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ok_BtnMouseClicked
-        if (Driver.player.size()>select) {
+        if (selectedUser != null) {
             CheckPassword CP = new CheckPassword();
             CP.setVisible(true);
             CP.setLocationRelativeTo(null);
             this.setVisible(false);
-        }else
-            JOptionPane.showMessageDialog(this, "Tidak ada data yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
+        } else JOptionPane.showMessageDialog(this, "Tidak ada player yang di select!", "Warning!", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_Ok_BtnMouseClicked
 
     private void user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user2MouseClicked
-        temp=1;
-        select=1;
+        try {
+            selectedUser = Driver.player.get(1);
+        } catch (Exception e) {
+            System.out.println("User not found");
+//          e.printStackTrace();
+        }
     }//GEN-LAST:event_user2MouseClicked
 
     private void user1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user1MouseClicked
-        temp=0;
-        select=0;
+        try {
+            selectedUser = Driver.player.get(0);
+        } catch (Exception e) {
+            System.out.println("User not found");
+//          e.printStackTrace();
+        }
     }//GEN-LAST:event_user1MouseClicked
 
     private void user3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user3MouseClicked
-        temp=2;
-        select=2;
+        try {
+            selectedUser = Driver.player.get(2);
+        } catch (Exception e) {
+            System.out.println("User not found");
+//          e.printStackTrace();
+        }
     }//GEN-LAST:event_user3MouseClicked
 
     /**

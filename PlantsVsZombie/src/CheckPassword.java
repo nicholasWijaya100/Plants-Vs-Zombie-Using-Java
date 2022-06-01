@@ -66,7 +66,7 @@ public class CheckPassword extends javax.swing.JFrame {
 
         UserSelect.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         UserSelect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UserSelect.setText(Driver.player.get(ShowUserFrame.temp).getUsername());
+        UserSelect.setText(ShowUserFrame.selectedUser.getUsername());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,8 +123,8 @@ public class CheckPassword extends javax.swing.JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         String tPassword = TextFieldPassword.getText();
-        if (tPassword.equals(Driver.player.get(ShowUserFrame.select).getPassword())) {
-            Driver.currentPlayer = Driver.player.get(ShowUserFrame.select);
+        if (tPassword.equals(ShowUserFrame.selectedUser.getPassword())) {
+            Driver.currentPlayer = ShowUserFrame.selectedUser;
             JOptionPane.showMessageDialog(this, "Berhasil Login!");
         }else
             JOptionPane.showMessageDialog(this, "Gagal Login!", "Warning!", JOptionPane.ERROR_MESSAGE);
