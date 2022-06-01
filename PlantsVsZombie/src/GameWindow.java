@@ -212,18 +212,25 @@ public class GameWindow extends javax.swing.JPanel {
                     }
                 }
             }
+            
+            //Zombie mati
             for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
                 if(zombieDiLawn.get(i).getHp() <= 0) {
                     if(zombieDiLawn.get(i) instanceof NormalZombie){
                         System.out.println("Normal Zombie mati");
+                        score += 10.0;
                     }else if(zombieDiLawn.get(i) instanceof ConeheadZombie){
                         System.out.println("Conehead Zombie mati");
+                        score += 15.0;
                     }else if(zombieDiLawn.get(i) instanceof BucketHeadZombie){
                         System.out.println("Buckethead Zombie mati");
+                        score += 20.0;
                     }
                     zombieDiLawn.remove(i);
+                    System.out.println("Score : " + score);
                 }
             }
+            
             repaint();
         }
     });    
