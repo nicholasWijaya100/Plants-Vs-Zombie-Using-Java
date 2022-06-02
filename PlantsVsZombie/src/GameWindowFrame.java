@@ -2,6 +2,7 @@
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -15,7 +16,7 @@ import javax.swing.JFrame;
 public class GameWindowFrame extends javax.swing.JFrame {
 
 
-    public GameWindowFrame() {
+    public GameWindowFrame() throws InterruptedException {
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 752);
@@ -28,6 +29,8 @@ public class GameWindowFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.out.println("Err : " + ex.getMessage().toString());
         }
+        
+        TimeUnit.SECONDS.sleep(39);
         
         try{
             Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/day.wav"));

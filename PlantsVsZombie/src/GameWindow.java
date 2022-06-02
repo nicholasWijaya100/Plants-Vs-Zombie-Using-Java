@@ -474,7 +474,7 @@ public class GameWindow extends javax.swing.JPanel {
             }
         }
     };
-    public GameWindow() {
+    public GameWindow() throws InterruptedException {
         initComponents();
         this.setSize(1000, 752);
         plantDitanam = new ArrayList<>();
