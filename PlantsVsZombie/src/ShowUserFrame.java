@@ -267,17 +267,16 @@ public class ShowUserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_user5MouseClicked
 
     private void Del_BtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Del_BtnMouseClicked
-//        try{
-//            String sql = "delete from gameuser where umur =";
-//            Statement  st = Driver.con.createStatement();
-//            st.execute(sql);
-//            Driver.player.add(new Player(tUsername,tPassword,tRealName,age,0));
-//            Driver.currentPlayer = Driver.player.get(0);
-//            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
-//        }catch(Exception e) {
-//            JOptionPane.showMessageDialog(this, "Data Gagal Disimpan", "Warning!", JOptionPane.ERROR_MESSAGE);
-//            e.printStackTrace();
-//        }
+        try{
+            String sql = "delete from gameuser where username = '" + selectedUser.getUsername() + "'";
+            Statement st = Driver.con.createStatement();
+            st.execute(sql);
+            JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus");
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Data Gagal Dihapus", "Warning!", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+        
         if(Driver.player.size() == 1) {
             try {
                 Driver.player.remove(selectedUser);
@@ -293,9 +292,6 @@ public class ShowUserFrame extends javax.swing.JFrame {
         } else{
             try {
                 Driver.player.remove(selectedUser);
-                for(Player i : Driver.player) {
-                    System.out.println(i.getUsername());
-                }
                 if(selectedUser == Driver.currentPlayer) Driver.currentPlayer = Driver.player.get(0);
                 selectedUser = null;
             } catch (Exception e) {
