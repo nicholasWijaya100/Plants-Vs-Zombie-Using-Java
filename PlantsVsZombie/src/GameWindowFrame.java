@@ -16,8 +16,9 @@ import javax.swing.JFrame;
 public class GameWindowFrame extends javax.swing.JFrame {
 
 
-    public GameWindowFrame() throws InterruptedException {
+    public GameWindowFrame() {
         initComponents();
+        gameWindow1.getFrameTua(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 752);
         setLocationRelativeTo(null);
@@ -30,7 +31,11 @@ public class GameWindowFrame extends javax.swing.JFrame {
             System.out.println("Err : " + ex.getMessage().toString());
         }
         
-        TimeUnit.SECONDS.sleep(39);
+        try {
+            TimeUnit.SECONDS.sleep(39);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GameWindowFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         try{
             Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/day.wav"));

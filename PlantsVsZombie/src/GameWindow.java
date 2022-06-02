@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class GameWindow extends javax.swing.JPanel {
@@ -42,6 +43,7 @@ public class GameWindow extends javax.swing.JPanel {
     Plant selectedPlant;
     JButton btnPilihSunflower = null;
     boolean pilihTile = false;
+    GameWindowFrame aa = null;
     int x;
     int y;
     int marginKiri = 48;
@@ -49,189 +51,201 @@ public class GameWindow extends javax.swing.JPanel {
     int ctrDetik = 0;
     int jumlahSun = 50;
     double score = 0;
+    boolean selesai = false;
     Timer tmr = new Timer(100, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             ctrDetik++;
             score = score + 0.1;
-            if(ctrDetik % 50 == 0) {
-                if(score <= 100){
-                    try {
-                        Zombie tempZombie = (Zombie) listZombie.get(0).clone();
-                        int lawnZombie = rnd.nextInt(5) + 1;
-                        if(lawnZombie == 1){
-                            tempZombie.setX(950); // lawn 1
-                            tempZombie.setY(120);
-                        }else if(lawnZombie == 2){
-                            tempZombie.setX(950); // lawn 2
-                            tempZombie.setY(240);
-                        }else if(lawnZombie == 3){
-                            tempZombie.setX(950); // lawn 3
-                            tempZombie.setY(360);
-                        }else if(lawnZombie == 4){
-                            tempZombie.setX(950); // lawn 4
-                            tempZombie.setY(480);
-                        }else if(lawnZombie == 5){
-                            tempZombie.setX(950); // lawn 5
-                            tempZombie.setY(610);
-                        }
-                        zombieDiLawn.add(tempZombie);
-                        System.out.println("Zombie spawn di lawn " + lawnZombie);
-                    } catch (CloneNotSupportedException ex) {
-                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }else if(score <= 250){
-                    try {
-                        Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(2)).clone();
-                        int lawnZombie = rnd.nextInt(5) + 1;
-                        if(lawnZombie == 1){
-                            tempZombie.setX(950); // lawn 1
-                            tempZombie.setY(120);
-                        }else if(lawnZombie == 2){
-                            tempZombie.setX(950); // lawn 2
-                            tempZombie.setY(240);
-                        }else if(lawnZombie == 3){
-                            tempZombie.setX(950); // lawn 3
-                            tempZombie.setY(360);
-                        }else if(lawnZombie == 4){
-                            tempZombie.setX(950); // lawn 4
-                            tempZombie.setY(480);
-                        }else if(lawnZombie == 5){
-                            tempZombie.setX(950); // lawn 5
-                            tempZombie.setY(610);
-                        }
-                        zombieDiLawn.add(tempZombie);
-                        System.out.println("Zombie spawn di lawn " + lawnZombie);
-                    } catch (CloneNotSupportedException ex) {
-                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }else{
-                    try {
-                        Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(3)).clone();
-                        int lawnZombie = rnd.nextInt(5) + 1;
-                        if(lawnZombie == 1){
-                            tempZombie.setX(950); // lawn 1
-                            tempZombie.setY(120);
-                        }else if(lawnZombie == 2){
-                            tempZombie.setX(950); // lawn 2
-                            tempZombie.setY(240);
-                        }else if(lawnZombie == 3){
-                            tempZombie.setX(950); // lawn 3
-                            tempZombie.setY(360);
-                        }else if(lawnZombie == 4){
-                            tempZombie.setX(950); // lawn 4
-                            tempZombie.setY(480);
-                        }else if(lawnZombie == 5){
-                            tempZombie.setX(950); // lawn 5
-                            tempZombie.setY(610);
-                        }
-                        zombieDiLawn.add(tempZombie);
-                        System.out.println("Zombie spawn di lawn " + lawnZombie);
-                    } catch (CloneNotSupportedException ex) {
-                        Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-            for(Plant i : plantDitanam) {
-                if(i instanceof Sunflower && ((Sunflower)i).getTerakhirGenerateSun() + ((Sunflower)i).getWaktuGenerateSun() <= ctrDetik) {
-                   ((Sunflower)i).setTerakhirGenerateSun(ctrDetik);
-                   i.generateSun(sunGeneric, sunDiLawn, i.getX(), i.getY());
-                }
-            }
-            if(ctrDetik % 50 == 0){
-                Sun temp = new Sun();
-                temp.generateSun(sunGeneric, sunDiLawn);
-            }
-            
-            //Cek Apakah Zombie makan plant atau tidak
             for(Zombie i : zombieDiLawn) {
-                boolean lagiMakanPlant = false;
-                Rectangle recZom = new Rectangle(i.getX(),i.getY(),62,100);
-                for (Plant j : plantDitanam){
-                    Rectangle recPlant = new Rectangle(j.getX(),j.getY(),74,73);
-                    if (recZom.intersects(recPlant)){
-                        lagiMakanPlant = true;
-                        if(i.getTerakhirMakan() + i.getWaktuTiapMakan() <= ctrDetik) {
-                            j.setHp(j.getHp() - i.getDamage());
-                            i.setTerakhirGerak(ctrDetik);
+                if(i.getX() < marginKiri) {
+                    tmr.stop();
+                    System.out.println("kalah");
+                    selesai = true;
+                }
+            }
+            if(selesai == false) {
+                if(ctrDetik % 50 == 0) {
+                    if(score <= 100){
+                        try {
+                            Zombie tempZombie = (Zombie) listZombie.get(0).clone();
+                            int lawnZombie = rnd.nextInt(5) + 1;
+                            if(lawnZombie == 1){
+                                tempZombie.setX(950); // lawn 1
+                                tempZombie.setY(120);
+                            }else if(lawnZombie == 2){
+                                tempZombie.setX(950); // lawn 2
+                                tempZombie.setY(240);
+                            }else if(lawnZombie == 3){
+                                tempZombie.setX(950); // lawn 3
+                                tempZombie.setY(360);
+                            }else if(lawnZombie == 4){
+                                tempZombie.setX(950); // lawn 4
+                                tempZombie.setY(480);
+                            }else if(lawnZombie == 5){
+                                tempZombie.setX(950); // lawn 5
+                                tempZombie.setY(610);
+                            }
+                            zombieDiLawn.add(tempZombie);
+                            System.out.println("Zombie spawn di lawn " + lawnZombie);
+                        } catch (CloneNotSupportedException ex) {
+                            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }else if(score <= 250){
+                        try {
+                            Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(2)).clone();
+                            int lawnZombie = rnd.nextInt(5) + 1;
+                            if(lawnZombie == 1){
+                                tempZombie.setX(950); // lawn 1
+                                tempZombie.setY(120);
+                            }else if(lawnZombie == 2){
+                                tempZombie.setX(950); // lawn 2
+                                tempZombie.setY(240);
+                            }else if(lawnZombie == 3){
+                                tempZombie.setX(950); // lawn 3
+                                tempZombie.setY(360);
+                            }else if(lawnZombie == 4){
+                                tempZombie.setX(950); // lawn 4
+                                tempZombie.setY(480);
+                            }else if(lawnZombie == 5){
+                                tempZombie.setX(950); // lawn 5
+                                tempZombie.setY(610);
+                            }
+                            zombieDiLawn.add(tempZombie);
+                            System.out.println("Zombie spawn di lawn " + lawnZombie);
+                        } catch (CloneNotSupportedException ex) {
+                            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }else{
+                        try {
+                            Zombie tempZombie = (Zombie) listZombie.get(rnd.nextInt(3)).clone();
+                            int lawnZombie = rnd.nextInt(5) + 1;
+                            if(lawnZombie == 1){
+                                tempZombie.setX(950); // lawn 1
+                                tempZombie.setY(120);
+                            }else if(lawnZombie == 2){
+                                tempZombie.setX(950); // lawn 2
+                                tempZombie.setY(240);
+                            }else if(lawnZombie == 3){
+                                tempZombie.setX(950); // lawn 3
+                                tempZombie.setY(360);
+                            }else if(lawnZombie == 4){
+                                tempZombie.setX(950); // lawn 4
+                                tempZombie.setY(480);
+                            }else if(lawnZombie == 5){
+                                tempZombie.setX(950); // lawn 5
+                                tempZombie.setY(610);
+                            }
+                            zombieDiLawn.add(tempZombie);
+                            System.out.println("Zombie spawn di lawn " + lawnZombie);
+                        } catch (CloneNotSupportedException ex) {
+                            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                 }
-                if(i.getTerakhirGerak() + 10 <= ctrDetik && lagiMakanPlant == false) {
-                    i.setX(i.getX() - i.getKecepatan());
-                    i.setTerakhirGerak(ctrDetik);
-                }
-            }
-            //Cek Apakah plant sudah mati atau belum, apabila sudah di remove
-            for(int i = plantDitanam.size() - 1; i >= 0; i--) {
-                if(plantDitanam.get(i).getHp() < 0) {
-                    plantDitanam.remove(i);
-                }
-            }
-            for(Zombie i : zombieDiLawn) {
-                for(Plant j : plantDitanam) {
-                    if(i.getY() == j.getY()) {
-                       if(j instanceof Peashooter) {
-                           ((Peashooter)j).setTembakAktif(true);
-                       } else if(j instanceof SnowPea) {
-                           ((SnowPea)j).setTembakAktif(true);
-                       }
+                for(Plant i : plantDitanam) {
+                    if(i instanceof Sunflower && ((Sunflower)i).getTerakhirGenerateSun() + ((Sunflower)i).getWaktuGenerateSun() <= ctrDetik) {
+                       ((Sunflower)i).setTerakhirGenerateSun(ctrDetik);
+                       i.generateSun(sunGeneric, sunDiLawn, i.getX(), i.getY());
                     }
                 }
-            }
-            for(Plant i : plantDitanam) {
-                if(i instanceof Peashooter && ((Peashooter)i).isTembakAktif() == true) {
-                    if(((Peashooter)i).getTerakhirTembak() + ((Peashooter)i).getWaktuTiapTembak() <= ctrDetik) {
-                        i.shoot(listPeluruh, peluruhDiLawn);
-                        ((Peashooter)i).setTerakhirTembak(ctrDetik);
-                    }
-                    ((Peashooter)i).setTembakAktif(false);
-                } else if(i instanceof SnowPea && ((SnowPea)i).isTembakAktif() == true) {
-                    if(((SnowPea)i).getTerakhirTembak() + ((SnowPea)i).getWaktuTiapTembak() <= ctrDetik) {
-                        i.shoot(listPeluruh, peluruhDiLawn);
-                        ((SnowPea)i).setTerakhirTembak(ctrDetik);
-                    }
-                    ((SnowPea)i).setTembakAktif(false);
+                if(ctrDetik % 50 == 0){
+                    Sun temp = new Sun();
+                    temp.generateSun(sunGeneric, sunDiLawn);
                 }
-            }
-            for(Peluruh i : peluruhDiLawn) {
-                i.setX(i.getX() + 10);
-            }
-            for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
-                if(peluruhDiLawn.get(i).getX() >= 1000) {
-                    peluruhDiLawn.remove(i);
+
+                //Cek Apakah Zombie makan plant atau tidak
+                for(Zombie i : zombieDiLawn) {
+                    boolean lagiMakanPlant = false;
+                    Rectangle recZom = new Rectangle(i.getX(),i.getY(),62,100);
+                    for (Plant j : plantDitanam){
+                        Rectangle recPlant = new Rectangle(j.getX(),j.getY(),74,73);
+                        if (recZom.intersects(recPlant)){
+                            lagiMakanPlant = true;
+                            if(i.getTerakhirMakan() + i.getWaktuTiapMakan() <= ctrDetik) {
+                                j.setHp(j.getHp() - i.getDamage());
+                                i.setTerakhirGerak(ctrDetik);
+                            }
+                        }
+                    }
+                    if(i.getTerakhirGerak() + 10 <= ctrDetik && lagiMakanPlant == false) {
+                        i.setX(i.getX() - i.getKecepatan());
+                        i.setTerakhirGerak(ctrDetik);
+                    }
                 }
-            }
-            for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
-                Rectangle recPeluruh = new Rectangle(peluruhDiLawn.get(i).getX(), peluruhDiLawn.get(i).getY(), 28, 28);
-                for(Zombie j : zombieDiLawn) {
-                    Rectangle recZom = new Rectangle(j.getX(), j.getY(), 62, 100);
-                    if(recPeluruh.intersects(recZom)) {
-                        j.setHp(j.getHp() - peluruhDiLawn.get(i).getDamage());
+                //Cek Apakah plant sudah mati atau belum, apabila sudah di remove
+                for(int i = plantDitanam.size() - 1; i >= 0; i--) {
+                    if(plantDitanam.get(i).getHp() < 0) {
+                        plantDitanam.remove(i);
+                    }
+                }
+                for(Zombie i : zombieDiLawn) {
+                    for(Plant j : plantDitanam) {
+                        if(i.getY() == j.getY()) {
+                           if(j instanceof Peashooter) {
+                               ((Peashooter)j).setTembakAktif(true);
+                           } else if(j instanceof SnowPea) {
+                               ((SnowPea)j).setTembakAktif(true);
+                           }
+                        }
+                    }
+                }
+                for(Plant i : plantDitanam) {
+                    if(i instanceof Peashooter && ((Peashooter)i).isTembakAktif() == true) {
+                        if(((Peashooter)i).getTerakhirTembak() + ((Peashooter)i).getWaktuTiapTembak() <= ctrDetik) {
+                            i.shoot(listPeluruh, peluruhDiLawn);
+                            ((Peashooter)i).setTerakhirTembak(ctrDetik);
+                        }
+                        ((Peashooter)i).setTembakAktif(false);
+                    } else if(i instanceof SnowPea && ((SnowPea)i).isTembakAktif() == true) {
+                        if(((SnowPea)i).getTerakhirTembak() + ((SnowPea)i).getWaktuTiapTembak() <= ctrDetik) {
+                            i.shoot(listPeluruh, peluruhDiLawn);
+                            ((SnowPea)i).setTerakhirTembak(ctrDetik);
+                        }
+                        ((SnowPea)i).setTembakAktif(false);
+                    }
+                }
+                for(Peluruh i : peluruhDiLawn) {
+                    i.setX(i.getX() + 10);
+                }
+                for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
+                    if(peluruhDiLawn.get(i).getX() >= 1000) {
                         peluruhDiLawn.remove(i);
                     }
                 }
-            }
-            
-            //Zombie mati
-            for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
-                if(zombieDiLawn.get(i).getHp() <= 0) {
-                    if(zombieDiLawn.get(i) instanceof NormalZombie){
-                        System.out.println("Normal Zombie mati");
-                        score += 10.0;
-                    }else if(zombieDiLawn.get(i) instanceof ConeheadZombie){
-                        System.out.println("Conehead Zombie mati");
-                        score += 15.0;
-                    }else if(zombieDiLawn.get(i) instanceof BucketHeadZombie){
-                        System.out.println("Buckethead Zombie mati");
-                        score += 20.0;
+                for(int i = peluruhDiLawn.size() - 1; i >= 0; i--) {
+                    Rectangle recPeluruh = new Rectangle(peluruhDiLawn.get(i).getX(), peluruhDiLawn.get(i).getY(), 28, 28);
+                    for(Zombie j : zombieDiLawn) {
+                        Rectangle recZom = new Rectangle(j.getX(), j.getY(), 62, 100);
+                        if(recPeluruh.intersects(recZom)) {
+                            j.setHp(j.getHp() - peluruhDiLawn.get(i).getDamage());
+                            peluruhDiLawn.remove(i);
+                        }
                     }
-                    zombieDiLawn.remove(i);
-                    System.out.println("Score : " + score);
                 }
+
+                //Zombie mati
+                for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
+                    if(zombieDiLawn.get(i).getHp() <= 0) {
+                        if(zombieDiLawn.get(i) instanceof NormalZombie){
+                            System.out.println("Normal Zombie mati");
+                            score += 10.0;
+                        }else if(zombieDiLawn.get(i) instanceof ConeheadZombie){
+                            System.out.println("Conehead Zombie mati");
+                            score += 15.0;
+                        }else if(zombieDiLawn.get(i) instanceof BucketHeadZombie){
+                            System.out.println("Buckethead Zombie mati");
+                            score += 20.0;
+                        }
+                        zombieDiLawn.remove(i);
+                        System.out.println("Score : " + score);
+                    }
+                }
+
+                repaint();
+            } else {
+                closeGameWindow();
             }
-            
-            repaint();
         }
     });    
     ActionListener actionPilihSunflower = new ActionListener() {    //click plant di deck
@@ -474,7 +488,21 @@ public class GameWindow extends javax.swing.JPanel {
             }
         }
     };
-    public GameWindow() throws InterruptedException {
+    
+    public void getFrameTua(GameWindowFrame a) {
+        aa = a;
+    }
+    
+    public void closeGameWindow() {
+        MainMenuFrame mm = new MainMenuFrame();
+        mm.setVisible(true);
+        mm.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(mm, "THE ZOMBIES ATE YOUR BRAINS");
+        aa.setVisible(false);
+        aa.dispose();
+    }
+    
+    public GameWindow() {
         initComponents();
         this.setSize(1000, 752);
         plantDitanam = new ArrayList<>();
