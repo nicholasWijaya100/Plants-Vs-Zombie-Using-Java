@@ -13,8 +13,7 @@ public class Player {
     private String nama_asli;
     private int umur;
     private int highscore;
-    private int skor = 0;
-
+    
     public Player(String username, String password, String nama_asli, int umur, int highscore) {
         this.username = username;
         this.password = password;

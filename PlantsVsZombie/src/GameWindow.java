@@ -8,6 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -62,6 +65,22 @@ public class GameWindow extends javax.swing.JPanel {
                     tmr.stop();
                     System.out.println("kalah");
                     selesai = true;
+                    System.out.println("Score : " + score);
+                    if(Driver.currentPlayer.getHighscore() < score){
+                        Connection con = null;
+                        PreparedStatement ps = null;
+                        try {
+                           con = DriverManager.getConnection("jdbc:mysql://127.0.01/db_proyekpbo_2022", "root", "");
+                           String query = "update gameuser set highscore=? where username=? ";
+                           ps = con.prepareStatement(query);
+                           ps.setInt(1, (int) score);
+                           ps.setString(2, Driver.currentPlayer.getUsername());
+                           ps.executeUpdate();
+                           System.out.println("Record is updated successfully......");
+                           } catch (Exception ex) {
+                              ex.printStackTrace();
+                           }
+                    }
                 }
             }
             if(selesai == false) {
@@ -544,7 +563,7 @@ public class GameWindow extends javax.swing.JPanel {
         
         try { 
             imagePlant = new ImageIcon("images/wallnut.gif").getImage();
-            listPlant.add(new Wallnut(100, imagePlant, 160, 610, 50));
+            listPlant.add(new Wallnut(150, imagePlant, 160, 610, 50));
         } catch (Exception ex) {
             System.out.println("Gambar Wallnut tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -561,7 +580,7 @@ public class GameWindow extends javax.swing.JPanel {
         //Memasukan jenis zombie yang ada
         try {
             imageZombie = ImageIO.read(new File("images/normalZombie.png"));
-            listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 30, 3, 30));
+            listZombie.add(new NormalZombie(140, imageZombie, 0, 0, 5, 3, 30));
         } catch (IOException ex) {
             System.out.println("Gambar Zombie Normal tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -569,7 +588,7 @@ public class GameWindow extends javax.swing.JPanel {
         
         try {
             imageZombie = ImageIO.read(new File("images/coneheadZombie.png"));
-            listZombie.add(new ConeheadZombie(240, imageZombie, 0, 0, 30, 3, 25));
+            listZombie.add(new ConeheadZombie(240, imageZombie, 0, 0, 10, 3, 25));
         } catch (IOException ex) {
             System.out.println("Gambar Conehead Zombie tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -577,7 +596,7 @@ public class GameWindow extends javax.swing.JPanel {
         
         try {
             imageZombie = ImageIO.read(new File("images/bucketheadZombie.png"));
-            listZombie.add(new BucketHeadZombie(400, imageZombie, 0, 0, 30, 3, 20));
+            listZombie.add(new BucketHeadZombie(400, imageZombie, 0, 0, 15, 3, 20));
         } catch (IOException ex) {
             System.out.println("Gambar Buckethead Zombie tidak ada");
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
