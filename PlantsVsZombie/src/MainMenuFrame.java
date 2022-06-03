@@ -13,6 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -57,6 +58,9 @@ public class MainMenuFrame extends javax.swing.JFrame {
         Options.setContentAreaFilled(false);
         Options.setBorderPainted(false);
         
+        Highscore.setContentAreaFilled(false);
+        Highscore.setBorderPainted(false);
+        
         Font font = new Font("Verdana", Font.PLAIN, 34);
         usernameLabel.setFont(font);
         usernameLabel.setForeground(Color.white);
@@ -78,6 +82,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
         Quit = new javax.swing.JButton();
         Options = new javax.swing.JButton();
         usernameLabel = new javax.swing.JLabel();
+        Highscore = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Zombie Vs Plants");
@@ -151,6 +156,14 @@ public class MainMenuFrame extends javax.swing.JFrame {
         mainMenu1.add(usernameLabel);
         usernameLabel.setBounds(100, 110, 240, 30);
 
+        Highscore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HighscoreActionPerformed(evt);
+            }
+        });
+        mainMenu1.add(Highscore);
+        Highscore.setBounds(20, 420, 190, 370);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,8 +222,13 @@ public class MainMenuFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_QuitMouseClicked
 
+    private void HighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HighscoreActionPerformed
+        JOptionPane.showMessageDialog(this, "Highscore : " + Driver.currentPlayer.getHighscore());
+    }//GEN-LAST:event_HighscoreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Highscore;
     private javax.swing.JButton Options;
     private javax.swing.JButton Quit;
     private javax.swing.JButton Users;

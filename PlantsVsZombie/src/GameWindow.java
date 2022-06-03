@@ -80,6 +80,7 @@ public class GameWindow extends javax.swing.JPanel {
                            } catch (Exception ex) {
                               ex.printStackTrace();
                            }
+                        Driver.currentPlayer.setHighscore((int) score);
                     }
                 }
             }
