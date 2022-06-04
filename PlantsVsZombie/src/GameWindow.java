@@ -491,12 +491,17 @@ public class GameWindow extends javax.swing.JPanel {
                     
                     try {
                         if(jumlahSun >= selectedPlant.cost){
-                            Plant copy = (Plant)selectedPlant.clone();
-                            copy.setX(xSet);
-                            copy.setY(ySet);
-                            plantDitanam.add(copy);
-                            System.out.println("planted");
-                            jumlahSun -= selectedPlant.cost;
+                            if(checkKosong(plantDitanam, xSet, ySet)){
+                                Plant copy = (Plant)selectedPlant.clone();
+                                copy.setX(xSet);
+                                copy.setY(ySet);
+                                plantDitanam.add(copy);
+                                System.out.println("planted");
+                                jumlahSun -= selectedPlant.cost;
+                            }else {
+                                System.out.println("Invalid place");
+                            }
+                            
                         }else{
                             System.out.println("Not enough sun, Sun : " + jumlahSun);
                         }
@@ -508,6 +513,15 @@ public class GameWindow extends javax.swing.JPanel {
             }
         }
     };
+    
+    static boolean checkKosong(ArrayList<Plant> planted, int x, int y){     //Function untuk cek lawn udah ada plant atau tidak
+        for (int i = 0; i < planted.size(); i++) {
+            if(planted.get(i).getX() == x && planted.get(i).getY() == y){
+                return false;
+            }
+        }       
+        return true;
+    }
     
     public void getFrameTua(GameWindowFrame a) {
         aa = a;
