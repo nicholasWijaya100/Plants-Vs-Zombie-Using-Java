@@ -31,11 +31,11 @@ public class GameWindowFrame extends javax.swing.JFrame {
             System.out.println("Err : " + ex.getMessage().toString());
         }
         
-//        try {
-//            TimeUnit.SECONDS.sleep(39);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(GameWindowFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            TimeUnit.SECONDS.sleep(39);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GameWindowFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         try{
             Driver.audioInputStream = AudioSystem.getAudioInputStream(new File("music/day.wav"));
