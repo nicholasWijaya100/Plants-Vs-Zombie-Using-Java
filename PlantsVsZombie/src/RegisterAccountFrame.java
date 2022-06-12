@@ -178,7 +178,7 @@ public class RegisterAccountFrame extends javax.swing.JFrame {
                 Statement  st = Driver.con.createStatement();
                 st.execute(sql);
                 Driver.player.add(new Player(tUsername,tPassword,tRealName,age,0));
-                Driver.currentPlayer = Driver.player.get(0);
+                Driver.currentPlayer = Driver.player.get(Driver.player.size()-1);
                 JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
             }catch(Exception e) {
                 JOptionPane.showMessageDialog(this, "Data Gagal Disimpan", "Warning!", JOptionPane.ERROR_MESSAGE);
