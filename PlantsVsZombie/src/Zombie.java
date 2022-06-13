@@ -22,6 +22,8 @@ public abstract class Zombie implements DrawInterface, Cloneable {
     protected double terakhirMakan; //Detik terakhir zombie makan plant
     protected int kecepatan;
     protected int terakhirGerak;
+    protected boolean slowMode;
+    protected int durasiSlowMode;
 
     public Zombie(int maxHp, Image zombieImage, int x, int y, int damage, double waktuTiapMakan, int kecepatan) {
         this.maxHp = maxHp;
@@ -34,6 +36,8 @@ public abstract class Zombie implements DrawInterface, Cloneable {
         this.terakhirMakan = 0;
         this.kecepatan = kecepatan;
         this.terakhirGerak = 0;
+        this.slowMode = false;
+        this.durasiSlowMode = 0;
     }
 
     public int getMaxHp() {
@@ -114,6 +118,22 @@ public abstract class Zombie implements DrawInterface, Cloneable {
 
     public void setTerakhirGerak(int terakhirGerak) {
         this.terakhirGerak = terakhirGerak;
+    }
+
+    public boolean isSlowMode() {
+        return slowMode;
+    }
+
+    public void setSlowMode(boolean slowMode) {
+        this.slowMode = slowMode;
+    }
+
+    public int getDurasiSlowMode() {
+        return durasiSlowMode;
+    }
+
+    public void setDurasiSlowMode(int durasiSlowMode) {
+        this.durasiSlowMode = durasiSlowMode;
     }
 
     @Override

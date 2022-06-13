@@ -63,10 +63,6 @@ public class GameWindowFrame extends javax.swing.JFrame {
             CardPlant wallnut = new CardPlant(ImageIO.read(new File("images/card_wallnut.png")));
             wallnut.setLocation(305,8);
             getLayeredPane().add(wallnut,new Integer(3));
-            
-            CardPlant cherrybomb = new CardPlant(ImageIO.read(new File("images/card_cherrybomb.png")));
-            cherrybomb.setLocation(370,8);
-            getLayeredPane().add(cherrybomb,new Integer(3));
         } catch(IOException e) {
             
         }

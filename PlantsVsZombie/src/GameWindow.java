@@ -189,7 +189,11 @@ public class GameWindow extends javax.swing.JPanel {
                         }
                     }
                     if(i.getTerakhirGerak() + 10 <= ctrDetik && lagiMakanPlant == false) {
-                        i.setX(i.getX() - i.getKecepatan());
+                        if(i.isSlowMode()) {
+                            i.setX(i.getX() - (i.getKecepatan() / 2));
+                        } else {
+                            i.setX(i.getX() - i.getKecepatan());
+                        }
                         i.setTerakhirGerak(ctrDetik);
                     }
                 }
@@ -239,7 +243,12 @@ public class GameWindow extends javax.swing.JPanel {
                         Rectangle recZom = new Rectangle(j.getX(), j.getY(), 62, 100);
                         if(recPeluruh.intersects(recZom)) {
                             j.setHp(j.getHp() - peluruhDiLawn.get(i).getDamage());
+                            if(peluruhDiLawn.get(i) instanceof PeluruhIcePea) {
+                                j.setSlowMode(true);
+                                j.setDurasiSlowMode(20);
+                            }
                             peluruhDiLawn.remove(i);
+                            break;
                         }
                     }
                 }
@@ -261,7 +270,16 @@ public class GameWindow extends javax.swing.JPanel {
                         System.out.println("Score : " + score);
                     }
                 }
-
+                for(Zombie i : zombieDiLawn) {
+                    if(i.isSlowMode()) {
+                        i.setDurasiSlowMode(i.getDurasiSlowMode() - 1);
+                    }
+                }
+                for(int i = zombieDiLawn.size() - 1; i >= 0; i--) {
+                    if(zombieDiLawn.get(i).getDurasiSlowMode() <= 0) {
+                        zombieDiLawn.get(i).setSlowMode(false);
+                    }
+                }
                 repaint();
             } else {
                 closeGameWindow();
@@ -296,14 +314,6 @@ public class GameWindow extends javax.swing.JPanel {
         public void actionPerformed(ActionEvent e) {
             selectedPlant = listPlant.get(3);
             System.out.println("Pilih Wallnut");
-        }
-    };
-    
-    ActionListener actionPilihCherrybomb = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            selectedPlant = listPlant.get(4);
-            System.out.println("Pilih Cherrybomb");
         }
     };
     
@@ -584,14 +594,6 @@ public class GameWindow extends javax.swing.JPanel {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        try { 
-            imagePlant = new ImageIcon("images/cherrybomb.png").getImage();
-            listPlant.add(new Cherrybomb(100, imagePlant, 160, 610, 150));
-        } catch (Exception ex) {
-            System.out.println("Gambar Cherrybomb tidak ada");
-            Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         //Memasukan jenis zombie yang ada
         try {
             imageZombie = ImageIO.read(new File("images/normalZombie.png"));
@@ -664,11 +666,6 @@ public class GameWindow extends javax.swing.JPanel {
         btnPilihWallnut.setBounds(305, 8, 64, 90);
         btnPilihWallnut.addActionListener(actionPilihWallnut);
         this.add(btnPilihWallnut);
-        
-        JButton btnPilihCherrybomb = new JButton("Cherrybomb");
-        btnPilihCherrybomb.setBounds(370, 8, 64, 90);
-        btnPilihCherrybomb.addActionListener(actionPilihCherrybomb);
-        this.add(btnPilihCherrybomb);
         
         //Button untuk select tile rumput
         JButton btnLawn = new JButton("");
